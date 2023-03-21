@@ -1,0 +1,19 @@
+{
+  "name": "sultan-ecommerse",
+  "version": "1.0.0",
+  "description": "Frontend часть Интернет магазина (React/Redux/Typescript)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GamaRayL/sultan-ecommerse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GamaRayL/sultan-ecommerse/issues"
+  },
+  "homepage": "https://github.com/GamaRayL/sultan-ecommerse#readme"
+}
