@@ -1,35 +1,70 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const plugins = [
+  new MiniCssExtractPlugin({
+    filename: '[name].[contenthash].css',
+  }),
+  new HTMLWebpackPlugin({
+    template: './src/index.html',
+  }),
+];
+
+const devServer = {
+  port: 8080,
+  watchFiles: ['src/*.html'],
+  hot: true,
+};
 
 module.exports = {
   mode: 'development',
-  entry: ['@babel/polyfill', './src/index.tsx'],
+  entry: ['./src/index.tsx'],
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
-  },
-  devServer: {
-    port: 3000,
-    watchFiles: ['src/*.html'],
-    hot: true,
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    clean: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      assets: path.resolve(__dirname, 'public'),
+    },
   },
-  plugins: [
-    new HTMLWebpackPlugin({ template: './src/index.html' }),
-    new CleanWebpackPlugin(),
-  ],
+  devServer,
+  plugins,
   module: {
     rules: [
       {
-        test: /\.(css|sass)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(s[ac]|c)ss$/i,
+        oneOf: [
+          {
+            test: /\.module\.(s[ac]|c)ss$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: {
+                    localIdentName: '[local]__[hash:base64:5]',
+                  },
+                },
+              },
+              'postcss-loader',
+              'sass-loader',
+            ],
+          },
+          {
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+          },
+        ],
       },
       {
-        test: /\.(jpg|jpeg|png|svg)/,
-        use: ['file-loader'],
+        test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
+        type: 'asset/resource',
       },
       {
         test: /\.m?js$/,
@@ -65,6 +100,7 @@ module.exports = {
           },
         },
       },
+      { test: /\.(html)$/, use: ['html-loader'] },
     ],
   },
 };

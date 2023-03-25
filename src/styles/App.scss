@@ -1,0 +1,16 @@
+@import 'reset';
+@import 'variables';
+
+img {
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: $small14;
+  margin: 0;
+}
+
+.app {
+  margin: 0 auto;
+}

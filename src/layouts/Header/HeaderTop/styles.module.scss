@@ -1,0 +1,165 @@
+@import '@/styles/_variables';
+@import '../styles.module.scss';
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 60px;
+}
+
+.link {
+  color: $darkBlue;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu {
+  display: none;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: $orange;
+  border-radius: 50%;
+  overflow: hidden;
+  &__nav {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 40px 0;
+    background-color: $orange;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  }
+  &__link {
+    color: $white;
+  }
+  &__item {
+    cursor: pointer;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: $semiBold;
+    transition: .2s;
+    &:hover {
+      background-color: $darkBlue;
+    }
+  }
+  &__label {
+    padding: 20px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: fixed;
+    z-index: 1;
+    width: 26px;
+    height: 26px;
+  }
+  &__btn > span,
+  &__btn > span::before,
+  &__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background-color: $white;
+    transition-duration: .2s;
+  }
+  &__btn > span::before {
+    content: '';
+    top: 4px;
+  }
+  &__btn > span::after {
+    content: '';
+    bottom: 4px;
+  }
+}
+
+#menu__toggle {
+  display: none;
+  &:checked ~ .menu__btn  > span {
+    transform: rotate(45deg);
+  }
+  &:checked ~ .menu__btn  > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  &:checked ~ .menu__btn  > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  &:checked ~ .menu__nav {
+    visibility: visible;
+    left: 0;
+  }
+}
+
+.logo {
+  display: none;
+  width: 98px;
+  height: 42px;
+}
+
+.basket {
+  display: none;
+  align-items: center;
+  gap: 24px;
+  &__icon {
+    position: relative;
+    width: 32px;
+    height: 30px;
+  }
+  &__count {
+    position: absolute;
+    font-size: 10px;
+    top: 0;
+    right: -10px;
+    padding: 1px 4px;
+    border-radius: 50%;
+    background-color: $orange;
+    color: $white;
+    font-weight: $bold;
+    border: 2px solid;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .box {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .logo {
+    display: block;
+  }
+  .nav {
+    display: none;
+  }
+  .basket {
+    display: block;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

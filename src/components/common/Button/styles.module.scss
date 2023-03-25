@@ -1,0 +1,50 @@
+@import '@/styles/_variables';
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: $orange;
+  color: $white;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  font-weight: $bold;
+  stroke: white;
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.large {
+  padding: 20px 54px;
+}
+
+.medium {
+  padding: 20px 44px;
+}
+
+.small {
+  padding: 10px;
+}
+
+@media screen and (max-width: 860px) {
+  .catalog {
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: $darkBlue;
+    font-weight: $semiBold;
+    font-size: $smaller12;
+    padding: 0;
+  }
+  .search {
+    background-color: transparent;
+  }
+  .btn {
+    &__catalog {
+      stroke: $darkBlue;
+    }
+  }
+}

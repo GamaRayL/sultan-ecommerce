@@ -1,0 +1,101 @@
+@import '@/styles/_variables';
+@import '../styles.module.scss';
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.info {
+  &_call {
+    font-size: $smaller10;
+    color: $darkGray;
+    text-decoration: underline;
+  }
+}
+
+.consultant {
+  display: flex;
+}
+
+.logo {
+  width: 156px;
+  height: 66px;
+}
+
+.consultant {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: .2s;
+  &__box {
+    text-align: right;
+  }
+  &__img {
+    position: relative;
+    width: 70px;
+    height: 92px;
+    border-radius: 50%;
+    overflow: hidden;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 4px;
+      border: 2px solid $gray;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: #1FD85D;
+    }
+  }
+}
+
+.basket {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  &__icon {
+    position: relative;
+    width: 46px;
+    height: 46px;
+  }
+  &__count {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    background-color: $orange;
+    color: $white;
+    font-weight: $bold;
+    border: 2px solid;
+  }
+}
+
+.line {
+  display: none;
+}
+
+@media screen and (max-width: 1260px) {
+  .consultant {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .basket {
+    display: none;
+  }
+  .logo {
+    display: none;
+  }
+  .line {
+    display: block;
+    border-right: 1px dotted;
+    height: 30px;
+  }
+}
