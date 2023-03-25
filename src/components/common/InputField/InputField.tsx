@@ -5,9 +5,10 @@ import sprite from '@/assets/sprite/sprite.svg';
 interface IInputField {
   placeholder?: string;
   mode?: boolean;
+  icon?: 'search' | 'arrow';
 }
 
-export const InputField: FC<IInputField> = ({ placeholder, mode }) => {
+export const InputField: FC<IInputField> = ({ placeholder, mode, icon }) => {
   return (
     <div className={styles.field}>
       <form className={styles.form} /* onSubmit={onSubmitHandler} */>
@@ -20,7 +21,7 @@ export const InputField: FC<IInputField> = ({ placeholder, mode }) => {
         />
         <button className={styles.btn}>
           <svg className={styles.btn__icon}>
-            <use xlinkHref={`${sprite}#search`}></use>
+            <use xlinkHref={`${sprite}#${icon || 'search'}`}></use>
           </svg>
         </button>
       </form>

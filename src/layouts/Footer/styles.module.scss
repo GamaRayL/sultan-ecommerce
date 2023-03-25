@@ -4,3 +4,103 @@
   background-color: $darkBlue;
   color: $white;
 }
+
+.wrap {
+  max-width: 1370px;
+  padding: 70px 15px;
+  margin: 0 auto;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 95px;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  &__icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.logo {
+  width: 156px;
+  height: 66px;
+}
+
+.icon {
+  fill: $white;
+}
+
+.company {
+  grid-column: 1/5;
+  margin-bottom: 45px;
+  &__info {
+    line-height: 1.5;
+    font-size: $small16;
+  }
+}
+
+.subscribe {
+  &__info {
+    font-size: 12px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  gap: 20px;
+}
+
+.item {
+  white-space: nowrap;
+}
+
+.link {
+  color: $white;
+  transition: .2s;
+  &:hover {
+    color: $orange;
+  }
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-weight: $semiBold;
+  white-space: nowrap;
+}
+
+.info {
+  &_weight {
+    font-weight: $semiBold;
+  }
+  &_light {
+    font-size: 12px;
+    font-weight: $light;
+  }
+  &_call {
+    color: $white;
+    font-size: 10px;
+    text-decoration: underline;
+  }
+}
+
+.contact {
+  margin-top: 25px;
+}
+
+.cards {
+  display: flex;
+  gap: 5px;
+  &__icon {
+    width: 62px;
+    height: 40px;
+  }
+}
