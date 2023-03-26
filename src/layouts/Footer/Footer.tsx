@@ -12,16 +12,21 @@ export const Footer = () => {
       <div className={styles.theme}>
         <div className={styles.wrap}>
           <div className={styles.footer}>
-            <div>
-              <div className={styles.company}>
-                <div className={styles.logo}>
-                  <svg className={styles.icon}>
-                    <use xlinkHref={`${sprite}#logo`}></use>
-                  </svg>
+            <div className={styles.company}>
+              <div className={styles.company__block}>
+                <div className={styles.company__top}>
+                  <div className={styles.logo}>
+                    <svg className={styles.icon}>
+                      <use xlinkHref={`${sprite}#logo`}></use>
+                    </svg>
+                  </div>
+                  <div className={styles.company__btn}>
+                    <Button icon='download' buttonSize='medium'>Прайс-лист</Button>
+                  </div>
                 </div>
                 <p className={styles.company__info}>
-                  Компания «Султан» — снабжаем <br /> розничные магазины товарами <br />
-                  "под ключ" в Кокчетаве и Акмолинской <br /> области
+                  Компания «Султан» — снабжаем розничные магазины товарами
+                  "под ключ" в Кокчетаве и Акмолинской области
                 </p>
               </div>
               <div className={styles.subscribe}>
@@ -29,7 +34,7 @@ export const Footer = () => {
                 <InputField placeholder='Введите ваш E-mail' icon='arrow' />
               </div>
             </div>
-            <ul className={styles.list}>
+            <ul className={`${styles.list} ${styles.list_menu}`}>
               <h3 className={styles.title}>Меню сайта:</h3>
               <li className={styles.item}>
                 <a href="#" className={styles.link} target="_blank">О компании</a>
@@ -44,7 +49,7 @@ export const Footer = () => {
                 <a href="#" className={styles.link} target="_blank">Контакты</a>
               </li>
             </ul>
-            <ul className={styles.list}>
+            <ul className={`${styles.list} ${styles.list_category}`}>
               <h3 className={styles.title}>Категории:</h3>
               <li className={styles.item}>
                 <a href="#" className={styles.link} target="_blank">Бытовая химия</a>
@@ -62,11 +67,13 @@ export const Footer = () => {
                 <a href="#" className={styles.link} target="_blank">Посуда</a>
               </li>
             </ul>
-            <div>
+            <div className={styles.price}>
               <h3 className={styles.title}>Скачать прайс-лист:</h3>
               <Button icon='download' buttonSize='large'>Прайс-лист</Button>
+            </div>
+            <div className={styles.social}>
               <p className={styles.info}>Связь в мессенджерах:</p>
-              <div className={styles.social}>
+              <div className={styles.social__box}>
                 <div className={styles.social__icon}>
                   <svg className={styles.icon}>
                     <use xlinkHref={`${sprite}#whatsapp`}></use>
@@ -79,32 +86,30 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-            <div>
+            <ul className={`${styles.list} ${styles.list_contacts}`}>
               <h3 className={styles.title}>Контакты:</h3>
-              <div className={styles.consultant}>
-                <p className={`${styles.info} ${styles.info_weight}`}>+7 (777) 490-00-91</p>
-                <p className={`${styles.info} ${styles.info_light}`}>время работы: 9:00-20:00</p>
-                <a href='#' className={`${styles.info} ${styles.info_call}`} target="_blank">Заказать звонок</a>
-              </div>
-              <div className={styles.contact}>
-                <p className={`${styles.info} ${styles.info_weight}`}>opt.sultan@mail.ru</p>
-                <p className={`${styles.info} ${styles.info_light}`}>На связи в любое время</p>
-              </div>
-              <div>
-                <div className={styles.cards}>
-                  <div className={styles.cards__icon}>
-                    <svg className={styles.icon}>
-                      <use xlinkHref={`${sprite}#visa`}></use>
-                    </svg>
-                  </div>
-                  <div className={styles.cards__icon}>
-                    <svg className={styles.icon}>
-                      <use xlinkHref={`${sprite}#mastercard`}></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <ul className={styles.consultant}>
+                <li className={`${styles.info} ${styles.info_weight}`}>+7 (777) 490-00-91</li>
+                <li className={`${styles.info} ${styles.info_light}`}>время работы: 9:00-20:00</li>
+                <li><a href='#' className={`${styles.info} ${styles.info_call}`} target="_blank">Заказать звонок</a></li>
+              </ul>
+              <ul className={styles.contact}>
+                <li className={`${styles.info} ${styles.info_weight}`}>opt.sultan@mail.ru</li>
+                <li className={`${styles.info} ${styles.info_light}`}>На связи в любое время</li>
+              </ul>
+              <ul className={styles.cards}>
+                <li className={styles.cards__icon}>
+                  <svg className={styles.icon}>
+                    <use xlinkHref={`${sprite}#visa`}></use>
+                  </svg>
+                </li>
+                <li className={styles.cards__icon}>
+                  <svg className={styles.icon}>
+                    <use xlinkHref={`${sprite}#mastercard`}></use>
+                  </svg>
+                </li>
+              </ul>
+            </ul>
           </div>
         </div>
       </div>

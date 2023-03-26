@@ -2,7 +2,6 @@
 
 .field {
   background-color: $gray;
-  width: fit-content;
   padding: 10px 10px 10px 20px;
   border-radius: 36px;
 }
@@ -19,6 +18,7 @@
   border: none;
   outline: none;
   background-color: transparent;
+  width: -webkit-fill-available;
   &::placeholder {
     content: 'bro';
     color: $darkBlue;
@@ -41,37 +41,37 @@
   }
 }
 
-@media screen and (max-width: 860px) {
-  .field {
-    background-color: transparent;
-    padding: 0;
-  }
-  .form {
-    flex-direction: row-reverse;
-    gap: 6px;
-  }
-  .input {
-    background-color: transparent;
-    &::placeholder {
-      content: '';
-      color: $darkBlue;
-      opacity: 1;
-      font-weight: $semiBold;
-    }
-    &_mode {
-      text-align: right;
-      max-width: 38px;
-    }
-  }
+// @media screen and (max-width: 860px) {
+//   .field {
+//     background-color: transparent;
+//     padding: 0;
+//   }
+//   .form {
+//     flex-direction: row-reverse;
+//     gap: 6px;
+//   }
+//   .input {
+//     background-color: transparent;
+//     &::placeholder {
+//       content: '';
+//       color: $darkBlue;
+//       opacity: 1;
+//       font-weight: $semiBold;
+//     }
+//     &_mode {
+//       text-align: right;
+//       max-width: 38px;
+//     }
+//   }
 
-  .btn {
-    background-color: transparent;
-    padding: 0;
-    &__icon {
-      width: 15px;
-      height: 15px;
-      stroke: $darkBlue;
-    }
-  }
+//   .btn {
+//     background-color: transparent;
+//     padding: 0;
+//     &__icon {
+//       width: 15px;
+//       height: 15px;
+//       stroke: $darkBlue;
+//     }
+//   }
 
-}
+// }

@@ -20,11 +20,7 @@ export const Button: FC<IButtonProps> = (props) => {
 
   return (
     <button
-      className={`
-        ${styles.btn}
-        ${checkButtonSize ? styles[checkButtonSize] : ''}
-        ${icon ? styles[icon] : ''}
-      `}
+      className={`${styles.btn} ${checkButtonSize ? styles[checkButtonSize] : ''} ${icon ? styles[icon] : ''}`}
       type={type}
       onClick={onClick}
     >

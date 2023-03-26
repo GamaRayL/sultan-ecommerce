@@ -13,17 +13,26 @@
 
 .footer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   gap: 95px;
 }
 
 .social {
-  display: flex;
-  gap: 10px;
+  grid-column: 4/5;
+  grid-row: 1/2;
+  &__box {
+    display: flex;
+    gap: 10px;
+  }
   &__icon {
     width: 40px;
     height: 40px;
   }
+}
+
+.price {
+  grid-column: 4/5;
+  grid-row: 1/2;
 }
 
 .logo {
@@ -36,11 +45,14 @@
 }
 
 .company {
-  grid-column: 1/5;
   margin-bottom: 45px;
+  width: 320px;
   &__info {
     line-height: 1.5;
     font-size: $small16;
+  }
+  &__btn {
+    display: none;
   }
 }
 
@@ -102,5 +114,52 @@
   &__icon {
     width: 62px;
     height: 40px;
+  }
+}
+
+
+@media screen and (max-width: 1260px) {
+
+}
+
+@media screen and (max-width: 860px) {
+  .wrap {
+    padding-top: 4px;
+  }
+  .logo {
+    max-width: 98px;
+  }
+  .price {
+    display: none;
+  }
+  .list {
+    &_menu {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    &_category {
+      grid-column: 3/6;
+    }
+    &_contacts {
+      grid-column: 1/3;
+    }
+    &_another {
+      grid-column: 3/6;
+    }
+  }
+  .company {
+    grid-column: 1/6;
+    grid-row: 1/2;
+    &__info {
+      font-size: 12px;
+    }
+    &__top {
+      display: flex;
+      align-items: center;
+      gap: 45px;
+    }
+    &__btn {
+      display: block;
+    }
   }
 }
