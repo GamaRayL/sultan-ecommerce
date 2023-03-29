@@ -1,0 +1,116 @@
+@import '@/styles/_variables';
+@import '@/styles/_extends';
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  &__img {
+    display: flex;
+    justify-content: center;
+    height: 472px;
+    width: 664px;
+  }
+  &__available {
+    color: $green;
+    font-weight: $medium;
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  &__brand, &__name {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+  &__brand {
+    font-weight: $extraBold;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+  &__img {
+    width: 20px;
+    height: 15px;
+    opacity: .23;
+  }
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  &__price {
+    font-size: $medium30;
+    font-weight: $extraBold;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  &__decrease, &__increase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: $darkBlue;
+    font-weight: $light;
+    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+  }
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 35px;
+  &__icon {
+    width: 17px;
+    height: 17px;
+    fill: $darkBlue;
+  }
+  &__share {
+    width: 24px;
+    height: 24px;
+    padding: 26px;
+    cursor: pointer;
+    @extend %shadow-radius;
+  }
+  &__info {
+    padding: 20px 36px;
+    max-width: 316px;
+    text-align: center;
+    font-size: 12px;
+    color: $darkBlue;
+    @extend %shadow-radius;
+  }
+  &__weight{
+    font-weight: $bold;
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    padding: 30px 38px;
+    color: $darkBlue;
+    font-weight: $extraBold;
+    @extend %shadow-radius;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+}

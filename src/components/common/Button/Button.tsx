@@ -5,7 +5,7 @@ import sprite from '@/assets/sprite/sprite.svg';
 interface IButtonProps {
   icon?: 'search' | 'download' | 'basket' | 'catalog',
   type?: 'button' | 'submit',
-  iconSize?: string,
+  iconSize?: 'medium',
   buttonSize?: 'large' | 'medium' | 'small',
   children?: React.ReactNode,
   onClick?: () => void,
@@ -20,15 +20,17 @@ export const Button: FC<IButtonProps> = (props) => {
 
   return (
     <button
-      className={`${styles.btn} ${checkButtonSize ? styles[checkButtonSize] : ''} ${icon ? styles[icon] : ''}`}
+      className={`${styles.btn} ${checkButtonSize ? styles[checkButtonSize] : ''}`}
+      // ${icon ? styles[icon] : ''}
       type={type}
       onClick={onClick}
     >
-      {children}
+      <span className={styles.btn__text}>{children}</span>
       {
-        icon && <svg className={`${styles.btn__icon} ${icon ? styles[`btn__${icon}`] : ''}`}>
+        icon && <svg className={`${styles.btn__icon} ${iconSize ? styles[`btn__${iconSize}`] : ''}`}>
           <use xlinkHref={`${sprite}#${icon}`}></use>
         </svg>
+        // ${icon ? styles[`btn__${icon}`] : ''}
       }
     </button >
   );

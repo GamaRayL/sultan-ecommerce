@@ -9,17 +9,25 @@
   border: none;
   border-radius: 80px;
   cursor: pointer;
-  font-weight: $bold;
-  stroke: white;
 
+  &__text {
+    font-size: 14px;
+    font-weight: $bold;
+    white-space: nowrap;
+  }
   &__icon {
     width: 15px;
     height: 15px;
+    fill: white;
+  }
+  &__medium {
+    width: 27px;
+    height: 27px;
   }
 }
 
 .large {
-  padding: 20px 53px;
+  padding: 20px 51px;
 }
 
 .medium {
@@ -27,7 +35,7 @@
 }
 
 .small {
-  padding: 10px;
+  padding: 10px 25px;
 }
 
 @media screen and (max-width: 860px) {
@@ -46,5 +54,15 @@
     &__catalog {
       stroke: $darkBlue;
     }
+    &__text {
+      font-size: 12px;
+    }
+    &__icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  .large {
+    padding: 14px 30px;
   }
 }

@@ -63,6 +63,7 @@
     position: relative;
     width: 46px;
     height: 46px;
+    fill: $darkBlue;
   }
   &__count {
     position: absolute;
@@ -88,6 +89,9 @@
 }
 
 @media screen and (max-width: 860px) {
+  .bottom {
+    padding: 0;
+  }
   .basket {
     display: none;
   }

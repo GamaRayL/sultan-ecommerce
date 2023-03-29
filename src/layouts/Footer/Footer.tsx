@@ -3,8 +3,6 @@ import sprite from '@/assets/sprite/sprite.svg';
 import styles from "./styles.module.scss";
 import { InputField } from '@/components/common/InputField';
 import { Button } from '@/components/common/Button';
-import visa from '@/assets/images/visa.png';
-import mastercard from '@/assets/images/mastercard.png';
 
 export const Footer = () => {
   return (
@@ -13,16 +11,11 @@ export const Footer = () => {
         <div className={styles.wrap}>
           <div className={styles.footer}>
             <div className={styles.company}>
-              <div className={styles.company__block}>
-                <div className={styles.company__top}>
-                  <div className={styles.logo}>
-                    <svg className={styles.icon}>
-                      <use xlinkHref={`${sprite}#logo`}></use>
-                    </svg>
-                  </div>
-                  <div className={styles.company__btn}>
-                    <Button icon='download' buttonSize='medium'>Прайс-лист</Button>
-                  </div>
+              <div className={styles.company__logo}>
+                <div className={styles.logo}>
+                  <svg className={styles.icon}>
+                    <use xlinkHref={`${sprite}#logo`}></use>
+                  </svg>
                 </div>
                 <p className={styles.company__info}>
                   Компания «Султан» — снабжаем розничные магазины товарами
@@ -68,11 +61,11 @@ export const Footer = () => {
               </li>
             </ul>
             <div className={styles.price}>
-              <h3 className={styles.title}>Скачать прайс-лист:</h3>
+              <h3 className={`${styles.title} ${styles.price__title}`}>Скачать прайс-лист:</h3>
               <Button icon='download' buttonSize='large'>Прайс-лист</Button>
             </div>
             <div className={styles.social}>
-              <p className={styles.info}>Связь в мессенджерах:</p>
+              <p className={styles.social__info}>Связь в мессенджерах:</p>
               <div className={styles.social__box}>
                 <div className={styles.social__icon}>
                   <svg className={styles.icon}>
@@ -89,30 +82,30 @@ export const Footer = () => {
             <ul className={`${styles.list} ${styles.list_contacts}`}>
               <h3 className={styles.title}>Контакты:</h3>
               <ul className={styles.consultant}>
-                <li className={`${styles.info} ${styles.info_weight}`}>+7 (777) 490-00-91</li>
-                <li className={`${styles.info} ${styles.info_light}`}>время работы: 9:00-20:00</li>
-                <li><a href='#' className={`${styles.info} ${styles.info_call}`} target="_blank">Заказать звонок</a></li>
-              </ul>
-              <ul className={styles.contact}>
-                <li className={`${styles.info} ${styles.info_weight}`}>opt.sultan@mail.ru</li>
-                <li className={`${styles.info} ${styles.info_light}`}>На связи в любое время</li>
-              </ul>
-              <ul className={styles.cards}>
-                <li className={styles.cards__icon}>
-                  <svg className={styles.icon}>
-                    <use xlinkHref={`${sprite}#visa`}></use>
-                  </svg>
-                </li>
-                <li className={styles.cards__icon}>
-                  <svg className={styles.icon}>
-                    <use xlinkHref={`${sprite}#mastercard`}></use>
-                  </svg>
-                </li>
-              </ul>
+                <li className={styles.info_weight} > +7(777) 490-00-91</li>
+              <li className={styles.info_light}>время работы: 9:00-20:00</li>
+              <li><a href='#' className={styles.info_call} target="_blank">Заказать звонок</a></li>
             </ul>
-          </div>
+            <ul className={styles.contact}>
+              <li className={styles.info_weight}>opt.sultan@mail.ru</li>
+              <li className={styles.info_light}>На связи в любое время</li>
+            </ul>
+            <ul className={styles.cards}>
+              <li className={styles.cards__icon}>
+                <svg className={styles.icon}>
+                  <use xlinkHref={`${sprite}#visa`}></use>
+                </svg>
+              </li>
+              <li className={styles.cards__icon}>
+                <svg className={styles.icon}>
+                  <use xlinkHref={`${sprite}#mastercard`}></use>
+                </svg>
+              </li>
+            </ul>
+          </ul>
         </div>
       </div>
-    </footer>
+    </div>
+    </footer >
   );
 };

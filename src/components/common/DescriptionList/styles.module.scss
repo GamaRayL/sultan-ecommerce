@@ -1,0 +1,14 @@
+@import '@/styles/_variables';
+
+.row {
+  display: flex;
+  gap: 5px;
+}
+.prop {
+  font-weight: $light;
+}
+.value {
+  text-align: left;
+  font-weight: $medium;
+  margin: 0;
+}

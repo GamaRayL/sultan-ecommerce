@@ -1,0 +1,21 @@
+@import '@/styles/_variables';
+
+.catalog {
+  &__box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.slider {
+  display: flex;
+  gap: 11px;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: $large40;
+  font-weight: $medium;
+  text-transform: uppercase;
+}

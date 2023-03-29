@@ -14,6 +14,8 @@ const plugins = [
 const devServer = {
   port: 8080,
   watchFiles: ['src/*.html'],
+  historyApiFallback: true,
+  static: path.resolve(__dirname, './dist'),
   hot: true,
 };
 
@@ -24,6 +26,7 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/[hash][ext][query]',
+    publicPath: '/',
     clean: true,
   },
   resolve: {

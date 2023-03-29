@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "brand": "AOS",
+    "name": "средство для мытья посуды Crystal",
+    "img": "https://img.05.ru/resize/h3XxmMXqcdtBIuBY3fP9SUbWgvqj1CkPrJMvH3YBtTE//rs:fit:862:1790:0:0/q:80/bG9jYWw6Ly8vdXBsb2FkL2libG9jay8wMDAwMDIwMDQ2NC8yLmpwZw",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
+    "article": "46040490",
+    "weight": "250 г",
+    "target": ["hands"],
+    "barcode": "4604049097548",
+    "vendor": "Нэфис",
+    "package": "bottle",
+    "size": "450 мл",
+    "price": 48.76
+  },
+  {
+    "id": 2,
+    "brand": "ARIEL",
+    "name": "Автомат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
+    "img": "https://c.dns-shop.ru/thumb/st4/fit/300/300/a4d687108c58dea3facd0dcaf8c6aa2f/f645df1e9a507371ab97e7937ff39126bfe38387b263532be5ea092e4d145a2a.jpg.webp",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
+    "article": "46040490",
+    "weight": "250 г",
+    "target": ["body"],
+    "barcode": "4604049097548",
+    "vendor": "Нэфис",
+    "package": "box",
+    "size": "15X28.8 г",
+    "price": 48.76
+  },
+  {
+    "id": 3,
+    "brand": "BIMAX",
+    "name": "Порошок стиральный Автомат 100 пятен COMPACT",
+    "img": "http://www.nefco.ru/wp-content/uploads/2019/02/100.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
+    "article": "46040490",
+    "weight": "250 г",
+    "target": ["body", "hands"],
+    "barcode": "4604049097548",
+    "vendor": "Нэфис",
+    "package": "box",
+    "size": "1500 г",
+    "price": 48.76
+  }
+]
