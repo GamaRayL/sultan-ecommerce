@@ -5,35 +5,53 @@ import sprite from '@/assets/sprite/sprite.svg';
 interface IButtonProps {
   icon?: 'search' | 'download' | 'basket' | 'catalog',
   type?: 'button' | 'submit',
-  iconSize?: 'medium',
-  buttonSize?: 'large' | 'medium' | 'small',
+  color?: 'primary' | 'inherit',
+  variant?: 'contained' | 'outlined',
+  iconSize?: number,
+  buttonSize?: 'small' | 'medium' | 'large',
   children?: React.ReactNode,
   onClick?: () => void,
 }
 
-const SIZES = ['small', "large", "medium"];
-
 export const Button: FC<IButtonProps> = (props) => {
-  const { icon, children, type, onClick, buttonSize, iconSize } = props;
+  const { icon, children, type, onClick, buttonSize, variant, color, iconSize } = props;
 
-  const checkButtonSize = SIZES.includes(buttonSize!) ? buttonSize : SIZES[0];
+  const isIcon = icon &&
+    <div
+      style={{
+        width: `${iconSize || 15}px`,
+        height: `${iconSize || 15}px`
+      }}>
+      <svg
+        className={`
+          ${styles.icon}
+          ${styles[`icon_${variant || 'contained'}`]}
+          ${styles[`icon_${color || 'primary'}`]}
+      `}>
+        <use xlinkHref={`${sprite}#${icon}`}></use>
+      </svg>
+    </div>
+    ;
 
   return (
     <button
-      className={`${styles.btn} ${checkButtonSize ? styles[checkButtonSize] : ''}`}
-      // ${icon ? styles[icon] : ''}
+      className={`
+        ${styles.btn}
+        ${styles[`btn_${color || 'primary'}`]}
+        ${styles[`btn_${variant || 'contained'}`]}
+      `}
       type={type}
       onClick={onClick}
     >
-      <span className={styles.btn__text}>{children}</span>
-      {
-        icon && <svg className={`${styles.btn__icon} ${iconSize ? styles[`btn__${iconSize}`] : ''}`}>
-          <use xlinkHref={`${sprite}#${icon}`}></use>
-        </svg>
-        // ${icon ? styles[`btn__${icon}`] : ''}
-      }
+      <span
+        className={`
+        ${styles.text}
+        ${styles[`text_${variant || 'contained'}`]}
+        ${styles[`text_${color || 'primary'}`]}
+      `}>
+        {children}
+      </span>
+      {isIcon}
     </button >
   );
 };
-
-// ${iconSize ? styles[iconSize] : ''}

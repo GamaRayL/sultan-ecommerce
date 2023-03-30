@@ -72,14 +72,9 @@
 
 .interaction {
   display: flex;
-  align-items: center;
+  height: 76px;
   gap: 10px;
   margin-bottom: 35px;
-  &__icon {
-    width: 17px;
-    height: 17px;
-    fill: $darkBlue;
-  }
   &__share {
     width: 24px;
     height: 24px;
@@ -97,20 +92,5 @@
   }
   &__weight{
     font-weight: $bold;
-  }
-  &__price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    padding: 30px 38px;
-    color: $darkBlue;
-    font-weight: $extraBold;
-    @extend %shadow-radius;
-    background: transparent;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    white-space: nowrap;
   }
 }

@@ -67,7 +67,9 @@ const CardPage = () => {
             <p className={styles.counter__number}>1</p>
             <button className={styles.counter__increase}>+</button>
           </div>
-          <Button icon='basket' buttonSize='large'>В корзину</Button>
+          <Button iconSize={23} icon='basket'>
+            В корзину
+          </Button>
         </div>
 
         <div className={styles.interaction}>
@@ -79,14 +81,7 @@ const CardPage = () => {
           <div className={styles.interaction__info}>
             При покупке от <span className={styles.interaction__weight}>10 000 ₸ </span>бесплатная доставка по Кокчетаву и области
           </div>
-          <button className={styles.interaction__price}>
-            Прайс-лист
-            <div className={styles.interaction__icon}>
-              <svg>
-                <use xlinkHref={`${sprite}#download`}></use>
-              </svg>
-            </div>
-          </button>
+          <Button color='inherit' variant='outlined' icon='download' iconSize={17}>Прайс-лист</Button>
         </div>
 
         <div>

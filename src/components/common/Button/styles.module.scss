@@ -1,68 +1,65 @@
 @import '@/styles/_variables';
+@import '@/styles/_extends';
 
 .btn {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: $orange;
-  color: $white;
   border: none;
-  border-radius: 80px;
   cursor: pointer;
-
-  &__text {
-    font-size: 14px;
-    font-weight: $bold;
-    white-space: nowrap;
+  padding: 22px 55px;
+  &_primary {
+    background-color: $orange;
   }
-  &__icon {
-    width: 15px;
-    height: 15px;
-    fill: white;
+  &_inherit {
+    background-color: $darkBlue;
   }
-  &__medium {
-    width: 27px;
-    height: 27px;
+  &_contained {
+    border-radius: 80px;
+  }
+  &_outlined {
+    background: transparent;
+    border-radius: 10px;
+    @extend %shadow-radius;
   }
 }
 
-.large {
-  padding: 20px 51px;
-}
-
-.medium {
-  padding: 14px 30px;
-}
-
-.small {
-  padding: 10px 25px;
-}
-
-@media screen and (max-width: 860px) {
-  .catalog {
-    flex-direction: row-reverse;
-    background-color: transparent;
+.text {
+  font-size: 14px;
+  font-weight: $bold;
+  white-space: nowrap;
+  &_outlined {
     color: $darkBlue;
-    font-weight: $semiBold;
-    font-size: $smaller12;
-    padding: 0;
   }
-  .search {
-    background-color: transparent;
+  &_primary {
+    color: $orange;
   }
-  .btn {
-    &__catalog {
-      stroke: $darkBlue;
-    }
-    &__text {
-      font-size: 12px;
-    }
-    &__icon {
-      width: 12px;
-      height: 12px;
-    }
-  }
-  .large {
-    padding: 14px 30px;
+  &_contained {
+    color: $white;
   }
 }
+
+.icon {
+  fill: $white;
+  &_outlined {
+    fill: $darkBlue;
+  }
+  &_primary {
+    fill: $orange;
+  }
+  &_contained {
+    fill: $white;
+  }
+}
+
+// .large {
+//   padding: 20px 51px;
+// }
+
+// .medium {
+//   padding: 14px 30px;
+// }
+
+// .small {
+//   padding: 10px 25px;
+// }
