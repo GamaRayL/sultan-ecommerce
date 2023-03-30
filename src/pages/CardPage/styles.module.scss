@@ -72,7 +72,7 @@
 
 .interaction {
   display: flex;
-  height: 76px;
+  align-items: stretch;
   gap: 10px;
   margin-bottom: 35px;
   &__share {
@@ -92,5 +92,34 @@
   }
   &__weight{
     font-weight: $bold;
+  }
+}
+
+.list {
+  margin-bottom: 30px;
+}
+
+.description {
+  margin-bottom: 20px;
+  &__title {
+    font-size: $small16;
+    font-weight: $medium;
+  }
+  &__info {
+    font-weight: $light;
+    line-height: 1.5;
+    font-size: $smaller12;
+  }
+}
+
+.specification {
+  border-top: 1px dotted rgba(63, 78, 101, .3);
+  width: fit-content;
+  padding-top: 20px;
+  padding-right: 60px;
+  &__title {
+    font-size: $small16;
+    font-weight: $medium;
+    padding-bottom: 5px;
   }
 }

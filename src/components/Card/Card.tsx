@@ -41,7 +41,7 @@ export const Card = ({ product }: ICardProps) => {
         </div>
 
         <div className={styles.title}>
-          <Link to={`${product.id}`}>
+          <Link to={`${product.article}`}>
             <span className={styles.title__brand}>{product.brand} </span>
             <span className={styles.title__name}>{product.name}</span>
           </Link>
@@ -66,7 +66,7 @@ export const Card = ({ product }: ICardProps) => {
         <div className={styles.payment}>
           <span className={styles.payment__value}>{product.price} ₸</span>
           <div className={styles.payment__btn}>
-            <Button icon='basket' buttonSize='small' iconSize='medium'>
+            <Button icon='basket' buttonSize='small' >
               В корзину
             </Button>
           </div>

@@ -27,7 +27,7 @@ interface ICareCard {
 }
 
 const CardPage = () => {
-  const { id } = useParams();
+  const { article } = useParams();
   const [card, setCard] = useState<IProduct>();
   const careObj = {
     body: 'Уход за телом',
@@ -35,9 +35,11 @@ const CardPage = () => {
   };
 
   useEffect(() => {
-    const product = products.filter(item => item.id === Number(id));
+    const product = products.filter(item => item.article === article);
     setCard(product[0]);
-  }, [id]);
+    window.scrollTo(0, 0);
+  }, [article]);
+
 
   return (
     <div className={styles.card}>
@@ -93,11 +95,11 @@ const CardPage = () => {
           </div>
         </div>
         <div className={styles.description}>
-          <div className={styles.description__title}>Описание <span>&gt;</span></div>
+          <div className={styles.description__title}>Описание <span>▲</span></div>
           <p className={styles.description__info}>{card?.description}</p>
         </div>
-        <div className={styles.specifications}>
-          <div className={styles.specification__title}>Характеристики <span>&gt;</span></div>
+        <div className={styles.specification}>
+          <div className={styles.specification__title}>Характеристики <span>▲</span></div>
           <div className={styles.list}>
             <DescriptionList prop='Назначение' value="Уход за телом" />
             <DescriptionList prop='Тип' value="крем" />
