@@ -3,6 +3,7 @@ import Card from '@/components/Card';
 import styles from "./styles.module.scss";
 import products from '@/store/products.json';
 import CareCard from '@/components/CareCard';
+import Filter from '@/components/Filter';
 
 const CatalogPage = () => {
   return (
@@ -14,6 +15,7 @@ const CatalogPage = () => {
       </div>
 
       <div className={styles.catalog__box}>
+        <Filter />
         {products.map(item =>
           <Card key={item.id} product={item} />
         )}

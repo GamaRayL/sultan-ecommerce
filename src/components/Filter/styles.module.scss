@@ -1,0 +1,71 @@
+@import '@/styles/_variables';
+
+.filter {
+  max-width: 238px;
+  &__title {
+    text-transform: uppercase;
+  }
+  &__tools {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 16px;
+  font-weight: $medium;
+  color: $black;
+}
+
+.price{
+  margin-bottom: 30px;
+  &__title {
+    font-weight: $light;
+    color: $darkBlue;
+  }
+  &__currency {
+    font-weight: $medium;
+    color: $black;
+  }
+  &__block {
+    display: flex;
+    gap: 10px;
+  }
+  &__dash {
+    font-weight: $medium;
+    color: $darkBlue;
+  }
+}
+
+.vendor {
+  margin-bottom: 25px;
+  &__input {
+    margin-bottom: 15px;
+  }
+  &__label {
+    color: $darkBlue;
+    cursor: pointer;
+  }
+  &__checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  &__name {
+    margin-right: 5px;
+  }
+  &__sum {
+    font-size: 10px;
+  }
+  &__show {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: $darkBlue;
+    font-weight: $medium;
+  }
+  &__icon {
+    font-size: 7px;
+  }
+}

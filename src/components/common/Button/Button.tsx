@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import sprite from '@/assets/sprite/sprite.svg';
 
 interface IButtonProps {
-  icon?: 'search' | 'download' | 'basket' | 'catalog',
+  icon?: 'search' | 'download' | 'basket' | 'catalog' | 'delete',
   type?: 'button' | 'submit',
   color?: 'primary' | 'inherit',
   variant?: 'contained' | 'outlined',

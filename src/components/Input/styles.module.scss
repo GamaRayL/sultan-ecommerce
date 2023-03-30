@@ -1,0 +1,13 @@
+@import '@/styles/_variables';
+
+.input {
+  text-align: center;
+  border: none;
+  border-radius: 1000px;
+  padding: 5px 0;
+  max-width: 100px;
+  background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+  color: $darkBlue;
+  font-size: 12px;
+  outline: none;
+}
