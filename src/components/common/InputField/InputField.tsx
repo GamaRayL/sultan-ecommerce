@@ -11,20 +11,18 @@ interface IInputField {
 export const InputField: FC<IInputField> = ({ placeholder, mode, icon }) => {
   return (
     <div className={styles.field}>
-      <form className={styles.form} /* onSubmit={onSubmitHandler} */>
-        <input
-          // value={value}
-          // onChange={onChangeHandler}
-          type="text"
-          placeholder={placeholder}
-          className={`${styles.input} ${mode ? styles.input_mode : ''}`}
-        />
-        <button className={styles.btn}>
-          <svg className={styles.btn__icon}>
-            <use xlinkHref={`${sprite}#${icon || 'search'}`}></use>
-          </svg>
-        </button>
-      </form>
+      <input
+        // value={value}
+        // onChange={onChangeHandler}
+        type="text"
+        placeholder={placeholder}
+        className={`${styles.input} ${mode ? styles.input_mode : ''}`}
+      />
+      <button className={styles.btn}>
+        <svg className={styles.btn__icon}>
+          <use xlinkHref={`${sprite}#${icon || 'search'}`}></use>
+        </svg>
+      </button>
     </div >
   );
 };
