@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import products from '@/store/products.json';
 import styles from "./styles.module.scss";
 import sprite from '@/assets/sprite/sprite.svg';
 import { Button } from '@/components/common/Button';
 import DescriptionList from '@/components/common/DescriptionList';
+import { useAppSelector } from '@/hooks';
 
 interface IProduct {
   id: number;
@@ -28,6 +28,7 @@ interface ICareCard {
 const CardPage = () => {
   const { article } = useParams();
   const [card, setCard] = useState<IProduct>();
+  const products = useAppSelector((state) => state.products.products);
   const careObj = {
     body: 'Уход за телом',
     hands: 'Уход за руками'

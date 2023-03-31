@@ -1,11 +1,12 @@
 import React from 'react';
 import Card from '@/components/Card';
 import styles from "./styles.module.scss";
-import products from '@/store/products.json';
 import CareCard from '@/components/CareCard';
 import Filter from '@/components/Filter';
+import { useAppSelector } from '@/hooks';
 
 const CatalogPage = () => {
+  const products = useAppSelector((state) => state.products.products);
   return (
     <>
       <h1 className={styles.title}>Каталог</h1>

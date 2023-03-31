@@ -37,6 +37,7 @@ module.exports = {
       assets: path.resolve(__dirname, 'public'),
     },
   },
+  devtool: "source-map",
   devServer,
   plugins,
   module: {
@@ -100,6 +101,16 @@ module.exports = {
               '@babel/preset-react',
               '@babel/preset-typescript',
             ],
+          },
+        },
+      },
+      {
+        test: /\.m?ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
           },
         },
       },
