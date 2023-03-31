@@ -8,13 +8,14 @@ interface IButtonProps {
   color?: 'primary' | 'inherit',
   variant?: 'contained' | 'outlined',
   iconSize?: number,
+  uppercase?: boolean,
   buttonSize?: 'small' | 'medium' | 'large',
   children?: React.ReactNode,
   onClick?: () => void,
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-  const { icon, children, type, onClick, buttonSize, variant, color, iconSize } = props;
+  const { icon, children, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;
 
   const isIcon = icon &&
     <div
@@ -38,19 +39,25 @@ export const Button: FC<IButtonProps> = (props) => {
       className={`
         ${styles.btn}
         ${styles[`btn_${color || 'primary'}`]}
+        ${styles[`btn_${buttonSize || 'medium'}`]}
         ${styles[`btn_${variant || 'contained'}`]}
       `}
       type={type}
       onClick={onClick}
     >
-      <span
-        className={`
-        ${styles.text}
-        ${styles[`text_${variant || 'contained'}`]}
-        ${styles[`text_${color || 'primary'}`]}
-      `}>
-        {children}
-      </span>
+      {
+        children && <span
+          style={{ textTransform: uppercase ? 'uppercase' : "none" }}
+          className={`
+            ${styles.text}
+            ${styles[`text_${variant || 'contained'}`]}
+            ${styles[`text_${color || 'primary'}`]}
+            ${styles[`text_${variant || 'contained'}`]}
+            `}>
+          {children}
+        </span>
+      }
+
       {isIcon}
     </button >
   );

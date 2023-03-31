@@ -15,11 +15,10 @@ interface IProduct {
   vendor: string;
   price: number;
   size: string;
-  package: string;
   article: string;
   description: string;
+  package: string;
   target: string[];
-  weight: string;
 }
 
 interface ICareCard {
@@ -107,8 +106,8 @@ const CardPage = () => {
             <DescriptionList prop='Бренд' value={card?.brand} />
             <DescriptionList prop='Артикул' value={card?.article} />
             <DescriptionList prop='Штрихкод' value={card?.barcode} />
-            <DescriptionList prop='Вес' value={card?.weight} />
-            <DescriptionList prop='Объем' value={card?.weight} />
+            <DescriptionList prop='Вес' value={card?.size} />
+            <DescriptionList prop='Объем' value={card?.size} />
             <DescriptionList prop='Кол-во в коробке' value="90" />
           </div>
         </div>

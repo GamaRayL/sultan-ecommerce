@@ -10,6 +10,8 @@
     justify-content: center;
     height: 472px;
     width: 664px;
+    pointer-events: none;
+    user-select: none;
   }
   &__available {
     color: $green;

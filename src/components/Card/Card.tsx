@@ -14,10 +14,9 @@ interface IProduct {
   vendor: string;
   price: number;
   size: string;
-  package: string;
   article: string;
+  package: string;
   target: string[];
-  weight: string;
 }
 
 interface ICardProps {
@@ -66,7 +65,7 @@ export const Card = ({ product }: ICardProps) => {
         <div className={styles.payment}>
           <span className={styles.payment__value}>{product.price} ₸</span>
           <div className={styles.payment__btn}>
-            <Button icon='basket' buttonSize='small' >
+            <Button icon='basket' buttonSize='small' iconSize={27} uppercase>
               В корзину
             </Button>
           </div>

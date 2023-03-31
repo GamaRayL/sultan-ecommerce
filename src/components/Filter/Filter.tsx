@@ -39,11 +39,11 @@ export const Filter = () => {
 
         <div className={styles.filter__tools}>
           <Button>Показать</Button>
-          <Button icon='delete'/>
+          <Button icon='delete' iconSize={25} buttonSize='small'/>
         </div>
 
-        <h3 className={styles.title}>Уход за телом</h3>
-        <h3 className={styles.title}>Уход за руками</h3>
+        <h3 className={`${styles.filter__title} ${styles.title}`}>Уход за телом</h3>
+        <h3 className={`${styles.filter__title} ${styles.title}`}>Уход за руками</h3>
       </form >
     </div >
   );

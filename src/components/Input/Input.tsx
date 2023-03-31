@@ -19,6 +19,7 @@ export const Input: FC = () => {
       className={styles.input}
       value={value}
       onChange={handleChange}
+      placeholder='0'
     />
   );
 };

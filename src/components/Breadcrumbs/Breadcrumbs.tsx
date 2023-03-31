@@ -19,7 +19,7 @@ export const Breadcrumbs = () => {
         renamedCrumb = 'Каталог';
       } else if (crumb == 'home') {
         renamedCrumb = 'Главная';
-      } else renamedCrumb = product.name;
+      } else renamedCrumb = `${product.brand} ${product.name}`;
 
       return (
         <div className={styles.crumb} key={crumb}>

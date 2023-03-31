@@ -14,11 +14,13 @@ const CatalogPage = () => {
         <CareCard care='hands' />
       </div>
 
-      <div className={styles.catalog__box}>
+      <div className={styles.catalog}>
         <Filter />
-        {products.map(item =>
-          <Card key={item.id} product={item} />
-        )}
+        <div className={styles.catalog__box}>
+          {products.map(item =>
+            <Card key={item.id} product={item} />
+          )}
+        </div>
       </div>
     </>
   );

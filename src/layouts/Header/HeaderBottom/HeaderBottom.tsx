@@ -30,7 +30,7 @@ export const HeaderBottom = () => {
           <use xlinkHref={`${sprite}#logo`}></use>
         </svg>
       </div>
-      <Button buttonSize='large' icon='catalog'>Каталог</Button>
+      <Button icon='catalog'>Каталог</Button>
       <div className={styles.line}></div>
       <InputField placeholder='Поиск' mode />
       <div className={styles.consultant}>

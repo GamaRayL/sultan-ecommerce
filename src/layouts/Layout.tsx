@@ -9,7 +9,7 @@ const Layout = () => {
     <>
       <Header />
       <Breadcrumbs />
-      <main style={{ maxWidth: '1370px', padding: 0, margin: '0 auto' }}>
+      <main style={{ maxWidth: '1370px', padding: 0, margin: '0 auto', marginBottom: '80px' }}>
         <Outlet />
       </main>
       <Footer />
