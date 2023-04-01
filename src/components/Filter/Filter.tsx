@@ -39,7 +39,7 @@ export const Filter = () => {
 
         <div className={styles.filter__tools}>
           <Button>Показать</Button>
-          <Button icon='delete' iconSize={25} buttonSize='small'/>
+          <Button icon='delete' iconSize={25} buttonSize='small' />
         </div>
 
         <h3 className={`${styles.filter__title} ${styles.title}`}>Уход за телом</h3>

@@ -1,0 +1,47 @@
+@import '@/styles/_variables';
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin: 20px 0;
+
+}
+
+.icon {
+  width: 9px;
+  height: 16px;
+  cursor: pointer;
+  &:hover {
+    fill: $darkBlue;
+  }
+  &_prev {
+    transform: rotate(180deg);
+  }
+  &_disable {
+    transition: none;
+    fill: $gray;
+    cursor: auto;
+    &:hover {
+      fill: $gray;
+    }
+  }
+  &_active {
+    fill: $orange;
+    transition: .2s;
+  }
+}
+
+.page, .page_current {
+  border-radius: 100%;
+  padding: 8.5px 14px;
+  margin: 0 9px;
+  cursor: pointer;
+  color: $darkBlue;
+  font-weight: $medium;
+  user-select: none;
+  &_current {
+    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);;
+    font-weight: 700;
+  }
+}

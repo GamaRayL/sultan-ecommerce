@@ -22,33 +22,51 @@ interface IProduct {
 }
 
 interface ProductState {
-  products: IProduct[];
+  products: IProduct[],
+  currentPage: number,
+  perPage: number,
+  totalPage: number,
+  paggProducts: IProduct[],
 }
 
 const initialState: ProductState = {
-  products: localProducts
+  products: localProducts,
+  paggProducts: localProducts.slice(0, 15),
+  currentPage: 1,
+  perPage: 15,
+  totalPage: Math.ceil(localProducts.length / 15),
 };
 
 export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    add: (state) => {
+    addProduct: (state) => {
 
     },
-    search: (state) => {
+    searchProduct: (state) => {
 
     },
-    sort: (state) => {
+    sortProduct: (state) => {
 
     },
-    remove: (state) => {
+    removeProduct: (state) => {
 
     },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      if (action.payload < 1) return;
+      if (action.payload > state.totalPage) return;
+      else {
+        state.currentPage = action.payload;
+        state.paggProducts = state.products.slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
+      }
+    },
+    setProducts: (state) => {
+    }
   }
 });
 
-export const { add, search, sort, remove } = productSlice.actions;
+export const { setCurrentPage, addProduct, searchProduct, sortProduct, removeProduct } = productSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products.products;
 

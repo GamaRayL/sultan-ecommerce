@@ -3,10 +3,17 @@ import Card from '@/components/Card';
 import styles from "./styles.module.scss";
 import CareCard from '@/components/CareCard';
 import Filter from '@/components/Filter';
-import { useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { setCurrentPage } from '@/features/product/productSlice';
+import sprite from '@/assets/sprite/sprite.svg';
+import Pagination from '@/components/Pagination';
 
 const CatalogPage = () => {
+  const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.products);
+  const paggProducts = useAppSelector((state) => state.products.paggProducts);
+  const currentPage = useAppSelector((state) => state.products.currentPage);
+
   return (
     <>
       <h1 className={styles.title}>Каталог</h1>
@@ -18,11 +25,13 @@ const CatalogPage = () => {
       <div className={styles.catalog}>
         <Filter />
         <div className={styles.catalog__box}>
-          {products.map(item =>
+          {paggProducts.map(item =>
             <Card key={item.id} product={item} />
           )}
         </div>
       </div>
+
+      <Pagination array={products} currentPage={currentPage} />
     </>
   );
 };

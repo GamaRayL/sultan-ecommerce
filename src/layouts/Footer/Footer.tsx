@@ -83,29 +83,29 @@ export const Footer = () => {
               <h3 className={styles.title}>Контакты:</h3>
               <ul className={styles.consultant}>
                 <li className={styles.info_weight} > +7(777) 490-00-91</li>
-              <li className={styles.info_light}>время работы: 9:00-20:00</li>
-              <li><a href='#' className={styles.info_call} target="_blank">Заказать звонок</a></li>
+                <li className={styles.info_light}>время работы: 9:00-20:00</li>
+                <li><a href='#' className={styles.info_call} target="_blank">Заказать звонок</a></li>
+              </ul>
+              <ul className={styles.contact}>
+                <li className={styles.info_weight}>opt.sultan@mail.ru</li>
+                <li className={styles.info_light}>На связи в любое время</li>
+              </ul>
+              <ul className={styles.cards}>
+                <li className={styles.cards__icon}>
+                  <svg className={styles.icon}>
+                    <use xlinkHref={`${sprite}#visa`}></use>
+                  </svg>
+                </li>
+                <li className={styles.cards__icon}>
+                  <svg className={styles.icon}>
+                    <use xlinkHref={`${sprite}#mastercard`}></use>
+                  </svg>
+                </li>
+              </ul>
             </ul>
-            <ul className={styles.contact}>
-              <li className={styles.info_weight}>opt.sultan@mail.ru</li>
-              <li className={styles.info_light}>На связи в любое время</li>
-            </ul>
-            <ul className={styles.cards}>
-              <li className={styles.cards__icon}>
-                <svg className={styles.icon}>
-                  <use xlinkHref={`${sprite}#visa`}></use>
-                </svg>
-              </li>
-              <li className={styles.cards__icon}>
-                <svg className={styles.icon}>
-                  <use xlinkHref={`${sprite}#mastercard`}></use>
-                </svg>
-              </li>
-            </ul>
-          </ul>
+          </div>
         </div>
       </div>
-    </div>
     </footer >
   );
 };
