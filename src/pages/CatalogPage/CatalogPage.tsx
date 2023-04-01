@@ -7,16 +7,22 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentPage } from '@/features/product/productSlice';
 import sprite from '@/assets/sprite/sprite.svg';
 import Pagination from '@/components/Pagination';
+import Sort from '@/components/Sort';
 
 const CatalogPage = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.products);
   const paggProducts = useAppSelector((state) => state.products.paggProducts);
   const currentPage = useAppSelector((state) => state.products.currentPage);
+  console.log(products);
 
   return (
     <>
-      <h1 className={styles.title}>Каталог</h1>
+      <div className={styles.header}>
+        <h1 className={styles.header__title}>Каталог</h1>
+        <Sort />
+      </div>
+
       <div className={styles.slider}>
         <CareCard care='body' />
         <CareCard care='hands' />

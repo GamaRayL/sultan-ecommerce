@@ -21,8 +21,14 @@
   margin-bottom: 30px;
 }
 
-.title {
-  font-size: $large40;
-  font-weight: $medium;
-  text-transform: uppercase;
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  &__title {
+    font-size: $large40;
+    font-weight: $medium;
+    text-transform: uppercase;
+  }
 }

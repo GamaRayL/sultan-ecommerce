@@ -4,15 +4,17 @@ import type { RootState } from '@/store';
 import arProducts from '@/store/products.json';
 import { ProductState } from '@/types';
 
-localStorage.setItem('products', JSON.stringify(arProducts));
-const localProducts = JSON.parse(localStorage.getItem('products') || '{}');
+// localStorage.setItem('products', JSON.stringify(arProducts));
+// let localProducts = JSON.parse(localStorage.getItem('products') || '{}');
+// localProducts = localProducts.sort((a: { price: number; }, b: { price: number; }) => b.price - a.price);
+// console.log(localProducts.sort((a: { price: number; }, b: { price: number; }) => b.price - a.price));
 
 const initialState: ProductState = {
-  products: localProducts,
-  paggProducts: localProducts.slice(0, 15),
+  products: arProducts,
+  paggProducts: arProducts.slice(0, 15),
   currentPage: 1,
   perPage: 15,
-  totalPage: Math.ceil(localProducts.length / 15),
+  totalPage: Math.ceil(arProducts.length / 15),
 };
 
 export const productSlice = createSlice({
@@ -25,8 +27,26 @@ export const productSlice = createSlice({
     searchProduct: (state) => {
 
     },
-    sortProduct: (state) => {
-
+    sortProducts: (state, action: PayloadAction<string>) => {
+      switch (action.payload) {
+        case 'Название':
+          state.paggProducts = state.products
+            .sort((a, b) => a.brand.toLowerCase() > b.brand.toLowerCase() ? 1 : -1)
+            .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
+          break;
+        case 'Цена (по возрастанию)':
+          state.paggProducts = state.products
+            .sort((a: { price: number; }, b: { price: number; }) => b.price - a.price)
+            .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
+          break;
+        case 'Цена (по убыванию)':
+          state.paggProducts = state.products
+            .sort((a: { price: number; }, b: { price: number; }) => a.price - b.price)
+            .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
+          break;
+        default:
+          break;
+      }
     },
     removeProduct: (state) => {
 
@@ -44,7 +64,7 @@ export const productSlice = createSlice({
   }
 });
 
-export const { setCurrentPage, addProduct, searchProduct, sortProduct, removeProduct } = productSlice.actions;
+export const { setCurrentPage, addProduct, searchProduct, sortProducts, removeProduct } = productSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products.products;
 

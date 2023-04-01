@@ -1,0 +1,73 @@
+@import '@/styles/_variables';
+
+.sort {
+  font-size: 16px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  &__box {
+    display: flex;
+  }
+  &__name {
+    color: $black;
+    margin-right: 5px;
+  }
+  &__current {
+    color: $darkBlue;
+    padding-right: 5px;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  &__icon {
+    font-size: 8px;
+    transition: .2s;
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.list {
+  white-space: nowrap;
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+  margin: 0;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 4px;
+  border-radius: 1000px;
+  width: fit-content;
+  background: rgba(188, 166, 122, 0.2);
+  &__icon {
+    width: 20px;
+    height: 20px;
+    padding: 10px 16px;
+  }
+  &__dash {
+    fill: $darkBlue;
+    opacity: .30;
+  }
+  &__catalog {
+    background-color: $white;
+    border-radius: 1000px;
+  }
+}
+
+.item {
+  color: $darkBlue;
+  transition: .2s;
+  &:hover {
+    color: $black;
+    transform: translateX(5px);
+  }
+}
