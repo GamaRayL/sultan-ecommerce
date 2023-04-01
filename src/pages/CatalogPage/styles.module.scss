@@ -8,6 +8,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-column: 2/5;
   }
+  &__pagination {
+    justify-self: center;
+    grid-column: 1/4;
+    margin-top: 50px;
+  }
 }
 
 .slider {

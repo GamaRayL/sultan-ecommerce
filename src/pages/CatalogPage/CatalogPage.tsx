@@ -28,10 +28,12 @@ const CatalogPage = () => {
           {paggProducts.map(item =>
             <Card key={item.id} product={item} />
           )}
+          <div className={styles.catalog__pagination}>
+            <Pagination array={products} currentPage={currentPage} />
+          </div>
         </div>
       </div>
 
-      <Pagination array={products} currentPage={currentPage} />
     </>
   );
 };
