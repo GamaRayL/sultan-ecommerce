@@ -1,18 +1,7 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import sprite from '@/assets/sprite/sprite.svg';
-
-interface IButtonProps {
-  icon?: 'search' | 'download' | 'basket' | 'catalog' | 'delete',
-  type?: 'button' | 'submit',
-  color?: 'primary' | 'inherit',
-  variant?: 'contained' | 'outlined',
-  iconSize?: number,
-  uppercase?: boolean,
-  buttonSize?: 'small' | 'medium' | 'large',
-  children?: React.ReactNode,
-  onClick?: () => void,
-}
+import { IButtonProps } from '@/types';
 
 export const Button: FC<IButtonProps> = (props) => {
   const { icon, children, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;

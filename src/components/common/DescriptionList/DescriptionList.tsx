@@ -1,10 +1,6 @@
+import { IDescriptionList } from '@/types';
 import React, { FC } from 'react';
 import styles from "./styles.module.scss";
-
-interface IDescriptionList {
-  prop: string;
-  value: string | number | undefined;
-}
 
 export const DescriptionList: FC<IDescriptionList> = ({ prop, value }) => {
   return (

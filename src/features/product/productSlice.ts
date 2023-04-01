@@ -2,32 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/store';
 import arProducts from '@/store/products.json';
+import { ProductState } from '@/types';
 
 localStorage.setItem('products', JSON.stringify(arProducts));
 const localProducts = JSON.parse(localStorage.getItem('products') || '{}');
-
-interface IProduct {
-  id: number;
-  brand: string;
-  name: string;
-  img: string;
-  description: string;
-  barcode: string;
-  vendor: string;
-  price: number;
-  size: string;
-  article: string;
-  package: string;
-  target: string[];
-}
-
-interface ProductState {
-  products: IProduct[],
-  currentPage: number,
-  perPage: number,
-  totalPage: number,
-  paggProducts: IProduct[],
-}
 
 const initialState: ProductState = {
   products: localProducts,

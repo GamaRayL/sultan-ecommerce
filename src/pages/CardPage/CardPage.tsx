@@ -5,21 +5,7 @@ import sprite from '@/assets/sprite/sprite.svg';
 import { Button } from '@/components/common/Button';
 import DescriptionList from '@/components/common/DescriptionList';
 import { useAppSelector } from '@/hooks';
-
-interface IProduct {
-  id: number;
-  brand: string;
-  name: string;
-  img: string;
-  barcode: string;
-  vendor: string;
-  price: number;
-  size: string;
-  article: string;
-  description: string;
-  package: string;
-  target: string[];
-}
+import { IProduct } from '@/types';
 
 interface ICareCard {
   care: 'body' | 'hands';

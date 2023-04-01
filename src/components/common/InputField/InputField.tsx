@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import styles from "./styles.module.scss";
 import sprite from '@/assets/sprite/sprite.svg';
-
-interface IInputField {
-  placeholder?: string;
-  mode?: boolean;
-  icon?: 'search' | 'arrow';
-}
+import { IInputField } from '@/types';
 
 export const InputField: FC<IInputField> = ({ placeholder, mode, icon }) => {
   return (

@@ -3,21 +3,7 @@ import styles from './styles.module.scss';
 import sprite from '@/assets/sprite/sprite.svg';
 import { Button } from '@/components/common/Button';
 import { Link } from 'react-router-dom';
-
-interface IProduct {
-  id: number;
-  brand: string;
-  name: string;
-  img: string;
-  description: string;
-  barcode: string;
-  vendor: string;
-  price: number;
-  size: string;
-  article: string;
-  package: string;
-  target: string[];
-}
+import { IProduct } from '@/types';
 
 interface ICardProps {
   product: IProduct;

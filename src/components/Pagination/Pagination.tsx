@@ -3,26 +3,7 @@ import styles from "./styles.module.scss";
 import sprite from '@/assets/sprite/sprite.svg';
 import { useAppDispatch } from '@/hooks';
 import { setCurrentPage } from '@/features/product/productSlice';
-
-interface IProduct {
-  id: number;
-  brand: string;
-  name: string;
-  img: string;
-  description: string;
-  barcode: string;
-  vendor: string;
-  price: number;
-  size: string;
-  article: string;
-  package: string;
-  target: string[];
-}
-
-interface IPaginationProps {
-  array: IProduct[];
-  currentPage: number;
-}
+import { IPaginationProps } from '@/types';
 
 export const Pagination: FC<IPaginationProps> = ({ array, currentPage }) => {
   const dispatch = useAppDispatch();
