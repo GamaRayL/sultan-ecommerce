@@ -1,24 +1,50 @@
 import { Button } from '@/components/common/Button';
 import { InputField } from '@/components/common/InputField';
 import Input from '@/components/Input';
-import React from 'react';
+import { searchProduct } from '@/features/product/productSlice';
+import { useAppSelector } from '@/hooks';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './styles.module.scss';
 
 export const Filter = () => {
+  const products = useAppSelector((state) => state.products.products);
+  const dispatch = useDispatch();
+  const [priceFrom, setPriceFrom] = useState('');
+  const [priceTo, setPriceTo] = useState('');
+
+  function sort(array: any) {
+    return array.filter((item: any) => {
+      if (item.price >= 0 && item.price <= 100) return item;
+    });
+  }
+
+  function onSubmitHandler(e: any) {
+    e.preventDefault();
+    dispatch(searchProduct({ priceFrom, priceTo }));
+  }
+
+  function onChangePriceFrom(price: any) {
+    setPriceFrom(price);
+  }
+
+  function onChangePriceTo(price: any) {
+    setPriceTo(price);
+  }
+
   return (
     <div className={styles.filter}>
       <h3 className={`${styles.filter__title} ${styles.title}`}>Подбор по параметрам</h3>
-      <form className={styles.form}>
-
+      <form className={styles.form} onSubmit={(e) => onSubmitHandler(e)}>
         <div className={styles.price}>
           <p className={styles.price__title}>Цена
             <span className={styles.price__currency}> ₸</span>
           </p>
 
           <div className={styles.price__block}>
-            <Input />
+            <Input onChange={onChangePriceFrom} />
             <span className={styles.price__dash}>-</span>
-            <Input />
+            <Input onChange={onChangePriceTo} />
           </div>
         </div>
 

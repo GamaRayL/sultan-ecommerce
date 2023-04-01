@@ -17,6 +17,11 @@ const initialState: ProductState = {
   totalPage: Math.ceil(arProducts.length / 15),
 };
 
+interface ISearchProduct {
+  priceFrom: string,
+  priceTo: string;
+}
+
 export const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -24,9 +29,18 @@ export const productSlice = createSlice({
     addProduct: (state) => {
 
     },
-    searchProduct: (state) => {
 
+    searchProduct: (state, action: PayloadAction<ISearchProduct>) => {
+      const priceFrom = Number(action.payload.priceFrom);
+      const priceTo = Number(action.payload.priceTo);
+
+      state.paggProducts = state.products
+        .filter((item: any) => {
+          if (item.price >= priceFrom && item.price <= priceTo) return item;
+        })
+        .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
     },
+
     sortProducts: (state, action: PayloadAction<string>) => {
       switch (action.payload) {
         case 'Название':
@@ -36,12 +50,12 @@ export const productSlice = createSlice({
           break;
         case 'Цена (по возрастанию)':
           state.paggProducts = state.products
-            .sort((a: { price: number; }, b: { price: number; }) => b.price - a.price)
+            .sort((a: { price: number; }, b: { price: number; }) => a.price - b.price)
             .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
           break;
         case 'Цена (по убыванию)':
           state.paggProducts = state.products
-            .sort((a: { price: number; }, b: { price: number; }) => a.price - b.price)
+            .sort((a: { price: number; }, b: { price: number; }) => b.price - a.price)
             .slice((state.currentPage - 1) * state.perPage, state.currentPage * state.perPage);
           break;
         default:

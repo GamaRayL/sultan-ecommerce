@@ -3,18 +3,16 @@ import Card from '@/components/Card';
 import styles from "./styles.module.scss";
 import CareCard from '@/components/CareCard';
 import Filter from '@/components/Filter';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { setCurrentPage } from '@/features/product/productSlice';
-import sprite from '@/assets/sprite/sprite.svg';
+import { useAppSelector } from '@/hooks';
 import Pagination from '@/components/Pagination';
 import Sort from '@/components/Sort';
 
 const CatalogPage = () => {
-  const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.products);
   const paggProducts = useAppSelector((state) => state.products.paggProducts);
   const currentPage = useAppSelector((state) => state.products.currentPage);
-  console.log(products);
+
+
 
   return (
     <>

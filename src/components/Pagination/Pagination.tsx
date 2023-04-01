@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import styles from "./styles.module.scss";
 import sprite from '@/assets/sprite/sprite.svg';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentPage } from '@/features/product/productSlice';
 import { IPaginationProps } from '@/types';
 
 export const Pagination: FC<IPaginationProps> = ({ array, currentPage }) => {
   const dispatch = useAppDispatch();
+  const totalPage = useAppSelector((state) => state.products.totalPage);
 
   let pages = [];
 
