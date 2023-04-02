@@ -34,10 +34,11 @@ export interface IInputField {
   placeholder?: string;
   mode?: boolean;
   icon?: 'search' | 'arrow';
+  onChange?: ((e: string) => void) | undefined;
 }
 
 export interface IPaginationProps {
-  array: IProduct[];
+  products: IProduct[];
   currentPage: number;
 }
 
@@ -47,4 +48,5 @@ export interface ProductState {
   perPage: number,
   totalPage: number,
   paggProducts: IProduct[],
+  vendors: {},
 }

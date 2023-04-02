@@ -5,13 +5,13 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentPage } from '@/features/product/productSlice';
 import { IPaginationProps } from '@/types';
 
-export const Pagination: FC<IPaginationProps> = ({ array, currentPage }) => {
+export const Pagination: FC<IPaginationProps> = ({ products, currentPage }) => {
   const dispatch = useAppDispatch();
-  const totalPage = useAppSelector((state) => state.products.totalPage);
-
+  
   let pages = [];
 
-  for (let i = 1; i <= Math.ceil(array.length / 15); i++) {
+  let perPage = Math.ceil(products.length / 15);
+  for (let i = 1; i <= perPage; i++) {
     pages.push(i);
   }
 
@@ -51,19 +51,18 @@ export const Pagination: FC<IPaginationProps> = ({ array, currentPage }) => {
 
   function onClickPageHandler(page: any) {
     dispatch(setCurrentPage(page));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   function onClickPagePrevHandler() {
-    if (currentPage === 1) return;
+    // if (currentPage === 1) return;
     dispatch(setCurrentPage(currentPage - 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   function onClickPageNextHandler() {
-    if (currentPage === pages.length) return;
+    // if (currentPage === pages.length) return;
     dispatch(setCurrentPage(currentPage + 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 };

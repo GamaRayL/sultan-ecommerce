@@ -40,6 +40,10 @@
 
 .vendor {
   margin-bottom: 25px;
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
   &__input {
     margin-bottom: 15px;
   }

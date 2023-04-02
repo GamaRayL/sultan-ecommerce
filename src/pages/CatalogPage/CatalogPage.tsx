@@ -12,8 +12,6 @@ const CatalogPage = () => {
   const paggProducts = useAppSelector((state) => state.products.paggProducts);
   const currentPage = useAppSelector((state) => state.products.currentPage);
 
-
-
   return (
     <>
       <div className={styles.header}>
@@ -33,7 +31,7 @@ const CatalogPage = () => {
             <Card key={item.id} product={item} />
           )}
           <div className={styles.catalog__pagination}>
-            <Pagination array={products} currentPage={currentPage} />
+            <Pagination products={products} currentPage={currentPage} />
           </div>
         </div>
       </div>

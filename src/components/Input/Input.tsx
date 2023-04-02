@@ -1,12 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface IInputProps {
   onChange?: ((e: string) => void) | undefined;
+  defaultValue?: string;
 }
 
-export const Input: FC<IInputProps> = ({ onChange }) => {
-  const [value, setValue] = useState('');
+export const Input: FC<IInputProps> = ({ onChange, defaultValue }) => {
+  const [value, setValue] = useState(defaultValue || '');
+
+  useEffect(() => {
+    onChange?.(value)
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const result = event.target.value.replace(/\D/g, '');
