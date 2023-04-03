@@ -1,14 +1,19 @@
 import React, { FC } from 'react';
-import styles from "./styles.module.scss";
-import sprite from '@/assets/sprite/sprite.svg';
+import { productAPI } from '@/services/ProductService';
+import { setCurrentPage } from '@/store/reducers/productSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { setCurrentPage } from '@/features/product/productSlice';
-import { IPaginationProps } from '@/types';
+import sprite from '@/assets/sprite/sprite.svg';
+import styles from "./styles.module.scss";
 
-export const Pagination: FC<IPaginationProps> = ({ products, currentPage }) => {
+export const Pagination = () => {
+  const { data: products, isSuccess } = productAPI.useFetchSortedProductsQuery({ sort: 'vendor', order: "asc" });
+
   const dispatch = useAppDispatch();
-  
+  const currentPage = useAppSelector(state => state.productReducer.currentPage);
+
   let pages = [];
+
+  if (!isSuccess) return;
 
   let perPage = Math.ceil(products.length / 15);
   for (let i = 1; i <= perPage; i++) {
@@ -54,15 +59,12 @@ export const Pagination: FC<IPaginationProps> = ({ products, currentPage }) => {
   };
 
   function onClickPagePrevHandler() {
-    // if (currentPage === 1) return;
     dispatch(setCurrentPage(currentPage - 1));
-    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   function onClickPageNextHandler() {
-    // if (currentPage === pages.length) return;
+    if (currentPage === pages.length) return;
     dispatch(setCurrentPage(currentPage + 1));
-    // window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 };

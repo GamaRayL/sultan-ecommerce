@@ -1,8 +1,8 @@
 import React, { FormEvent, FormEventHandler, useEffect, useState } from 'react';
-import styles from "./styles.module.scss";
-import sprite from '@/assets/sprite/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { sortProducts } from '@/features/product/productSlice';
+import sprite from '@/assets/sprite/sprite.svg';
+import styles from "./styles.module.scss";
+// import { sortProducts } from '@/features/product/productSlice';
 
 export const Sort = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export const Sort = () => {
   const array = ['Название', 'Цена (по возрастанию)', 'Цена (по убыванию)'];
 
   useEffect(() => {
-    dispatch(sortProducts(value));
+    // dispatch(sortProducts(value));
 
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;

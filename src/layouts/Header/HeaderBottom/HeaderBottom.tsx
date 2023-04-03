@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import sprite from '@/assets/sprite/sprite.svg';
 import styles from "./styles.module.scss";
 import consultant from '@/assets/images/consultant.png';
-import { Button } from '@/components/common/Button';
-import { InputField } from '@/components/common/InputField';
-
-
+import Button from '@/components/Button';
+import InputField from '@/components/InputField';
 
 export const HeaderBottom = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

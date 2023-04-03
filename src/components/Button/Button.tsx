@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import styles from './styles.module.scss';
-import sprite from '@/assets/sprite/sprite.svg';
 import { IButtonProps } from '@/types';
+import sprite from '@/assets/sprite/sprite.svg';
+import styles from './styles.module.scss';
 
 export const Button: FC<IButtonProps> = (props) => {
   const { icon, children, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;

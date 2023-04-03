@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface IProduct {
   id: number;
   brand: string;
@@ -22,7 +24,7 @@ export interface IButtonProps {
   uppercase?: boolean,
   buttonSize?: 'small' | 'medium' | 'large',
   children?: React.ReactNode,
-  onClick?: () => void,
+  onClick?: (e: React.MouseEvent) => void,
 }
 
 export interface IDescriptionList {
@@ -38,8 +40,7 @@ export interface IInputField {
 }
 
 export interface IPaginationProps {
-  products: IProduct[];
-  currentPage: number;
+  products: IProduct[] | undefined;
 }
 
 export interface ProductState {

@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import styles from './styles.module.scss';
-import sprite from '@/assets/sprite/sprite.svg';
-import { Button } from '@/components/common/Button';
 import { Link } from 'react-router-dom';
 import { IProduct } from '@/types';
+import Button from '@/components/Button';
+import sprite from '@/assets/sprite/sprite.svg';
+import styles from './styles.module.scss';
 
 interface ICardProps {
   product: IProduct;
@@ -26,7 +26,7 @@ export const Card = ({ product }: ICardProps) => {
         </div>
 
         <div className={styles.title}>
-          <Link to={`${product.article}`}>
+          <Link to={`${product.id}`}>
             <span className={styles.title__brand}>{product.brand} </span>
             <span className={styles.title__name}>{product.name}</span>
           </Link>

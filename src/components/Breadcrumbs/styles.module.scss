@@ -5,13 +5,7 @@
   gap: 10px;
   max-width: 1370px;
   padding: 0;
-  margin: 0 auto;
-  margin-bottom: 50px;
-}
-
-.crumb > a {
-  color: $darkBlue;
-  font-weight: $light;
+  margin: 0 auto 50px auto;
 }
 
 .crumb {
@@ -20,9 +14,12 @@
   background-size: 1px 4px;
   background-repeat: repeat-y;
   padding-right: 10px;
-}
-
-.crumb:last-child {
-  opacity: .50;
-  background-image: none;
+  &:last-child {
+    opacity: .50;
+    background-image: none;
+ }
+  a {
+    color: $darkBlue;
+    font-weight: $light;
+  }
 }

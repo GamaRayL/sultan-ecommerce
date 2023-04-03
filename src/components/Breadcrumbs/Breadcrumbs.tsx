@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './styles.module.scss';
 import products from '@/store/db.json';
+import styles from './styles.module.scss';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -12,7 +12,7 @@ export const Breadcrumbs = () => {
     .map(crumb => {
       currentLink += `/${crumb}`;
 
-      let product = products.filter(p => p.article == crumb)[0];
+      let product = products.filter(p => p.id == Number(crumb))[0];
       let renamedCrumb;
 
       if (crumb == 'catalog') {

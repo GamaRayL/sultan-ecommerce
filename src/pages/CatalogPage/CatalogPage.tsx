@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { productAPI } from '@/services/ProductService';
+import { useAppSelector } from '@/hooks';
 import Card from '@/components/Card';
-import styles from "./styles.module.scss";
 import CareCard from '@/components/CareCard';
 import Filter from '@/components/Filter';
-import { useAppSelector } from '@/hooks';
 import Pagination from '@/components/Pagination';
 import Sort from '@/components/Sort';
+import Loader from '@/components/Loader';
+import styles from "./styles.module.scss";
 
 const CatalogPage = () => {
-  const products = useAppSelector((state) => state.products.products);
-  const paggProducts = useAppSelector((state) => state.products.paggProducts);
-  const currentPage = useAppSelector((state) => state.products.currentPage);
+  const [limit, setLimit] = useState();
+  const [priceFrom, setPriceFrom] = useState('0');
+  const [priceTo, setPriceTo] = useState('10000');
+  const [vendor, setVendor] = useState('');
+  const currentPage = useAppSelector(state => state.productReducer.currentPage);
+  const { data: productsFiltred, isLoading, error, originalArgs } = productAPI.useFetchFiltredProductsQuery({ page: currentPage, limit: 15, gte: priceFrom, lte: priceTo });
+  // Как указать массив дополнительных параметров или комбинированную строку в rtk query запросе на json server
 
   return (
     <>
@@ -25,13 +31,15 @@ const CatalogPage = () => {
       </div>
 
       <div className={styles.catalog}>
-        <Filter />
+        <Filter setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} setVendor={setVendor} />
         <div className={styles.catalog__box}>
-          {paggProducts.map(item =>
-            <Card key={item.id} product={item} />
+          {isLoading && <div className={styles.catalog__other}><Loader /></div>}
+          {error && <div className={styles.catalog__other}><h2>Возникла ошибка при загрузке контента</h2></div>}
+          {productsFiltred && productsFiltred.map(product =>
+            <Card key={product.id} product={product} />
           )}
           <div className={styles.catalog__pagination}>
-            <Pagination products={products} currentPage={currentPage} />
+            {productsFiltred && <Pagination />}
           </div>
         </div>
       </div>

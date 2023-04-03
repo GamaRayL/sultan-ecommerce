@@ -1,35 +1,24 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 
 interface IInputProps {
   onChange?: ((e: string) => void) | undefined;
-  defaultValue?: string;
+  priceValue?: string;
 }
 
-export const Input: FC<IInputProps> = ({ onChange, defaultValue }) => {
-  const [value, setValue] = useState(defaultValue || '');
-
-  useEffect(() => {
-    onChange?.(value)
-  }, []);
+export const Input: FC<IInputProps> = ({ onChange, priceValue }) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const result = event.target.value.replace(/\D/g, '');
 
-    setValue(result);
-    onChange?.(event.target.value);
+    onChange?.(result);
   };
-
-  // if (value !== '') {
-  //   const num = Number(value);
-  // }
 
   return (
     <input
       className={styles.input}
-      value={value}
+      value={priceValue}
       onChange={handleChange}
-      placeholder='0'
     />
   );
 };

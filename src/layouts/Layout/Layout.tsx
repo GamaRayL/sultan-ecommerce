@@ -1,19 +1,19 @@
 import React from 'react';
-import { Header } from '@/layouts/Header';
 import { Outlet } from 'react-router-dom';
-import { Footer } from '@/layouts/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import Header from '@/layouts/Header';
+import Footer from '@/layouts/Footer';
+import styles from "./styles.module.scss";
 
-const Layout = () => {
+export const Layout = () => {
   return (
     <>
       <Header />
       <Breadcrumbs />
-      <main style={{ maxWidth: '1370px', padding: 0, margin: '0 auto', marginBottom: '80px' }}>
+      <main className={styles.main}>
         <Outlet />
       </main>
       <Footer />
     </>
   );
 };
-export default Layout;

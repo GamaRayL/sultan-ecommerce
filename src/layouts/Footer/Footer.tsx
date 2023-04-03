@@ -1,8 +1,8 @@
 import React from 'react';
 import sprite from '@/assets/sprite/sprite.svg';
 import styles from "./styles.module.scss";
-import { InputField } from '@/components/common/InputField';
-import { Button } from '@/components/common/Button';
+import InputField from '@/components/InputField';
+import Button from '@/components/Button';
 
 export const Footer = () => {
   return (

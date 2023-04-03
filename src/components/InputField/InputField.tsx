@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
-import styles from "./styles.module.scss";
-import sprite from '@/assets/sprite/sprite.svg';
 import { IInputField } from '@/types';
+import sprite from '@/assets/sprite/sprite.svg';
+import styles from "./styles.module.scss";
 
 export const InputField: FC<IInputField> = ({ onChange, placeholder, mode, icon }) => {
   const [value, setValue] = useState('');
