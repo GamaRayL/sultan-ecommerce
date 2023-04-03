@@ -4,7 +4,7 @@ import sprite from '@/assets/sprite/sprite.svg';
 import styles from './styles.module.scss';
 
 export const Button: FC<IButtonProps> = (props) => {
-  const { icon, children, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;
+  const { icon, children, form, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;
 
   const isIcon = icon &&
     <div
@@ -33,6 +33,7 @@ export const Button: FC<IButtonProps> = (props) => {
       `}
       type={type}
       onClick={onClick}
+      form={form}
     >
       {
         children && <span

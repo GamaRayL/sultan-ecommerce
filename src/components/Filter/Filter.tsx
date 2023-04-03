@@ -31,8 +31,10 @@ export const Filter: FC<FilterProps> = (props) => {
     if (+valuePriceFrom > +valuePriceTo) return;
     setPriceFrom(valuePriceFrom);
     setPriceTo(valuePriceTo);
-    setVendor(currentVendorArr.join('&vendor='));
-    console.log(currentVendorArr.join('&vendor='));
+    setVendor(currentVendorArr);
+    e.target.reset();
+    console.log(e.target)
+    console.log(currentVendorArr);
   }
 
   function onClickResetHandler(e: any) {
@@ -101,7 +103,7 @@ export const Filter: FC<FilterProps> = (props) => {
       {isLoading && <Loader />}
       {productsPriceHighToLow && <>
         <h3 className={`${styles.filter__title} ${styles.title}`}>Подбор по параметрам</h3>
-        <form className={styles.form} onSubmit={(e) => onSubmitHandler(e)}>
+        <form className={styles.form} id="filter-form" onSubmit={(e) => onSubmitHandler(e)}>
           <div className={styles.price}>
             <p className={styles.price__title}>Цена
               <span className={styles.price__currency}> ₸</span>
@@ -142,7 +144,7 @@ export const Filter: FC<FilterProps> = (props) => {
         </form >
 
         <div className={styles.filter__tools}>
-          <Button onClick={onSubmitHandler}>Показать</Button>
+          <Button form='filter-form' type='submit'>Показать</Button>
           <Button onClick={onClickResetHandler} icon='delete' iconSize={25} buttonSize='small' />
         </div>
 

@@ -15,8 +15,7 @@ const CatalogPage = () => {
   const [priceTo, setPriceTo] = useState('10000');
   const [vendor, setVendor] = useState('');
   const currentPage = useAppSelector(state => state.productReducer.currentPage);
-  const { data: productsFiltred, isLoading, error, originalArgs } = productAPI.useFetchFiltredProductsQuery({ page: currentPage, limit: 15, gte: priceFrom, lte: priceTo });
-  // Как указать массив дополнительных параметров или комбинированную строку в rtk query запросе на json server
+  const { data: productsFiltred, isLoading, error, originalArgs } = productAPI.useFetchFiltredProductsQuery({ page: currentPage, limit: 15, gte: priceFrom, lte: priceTo, vendor });
 
   return (
     <>

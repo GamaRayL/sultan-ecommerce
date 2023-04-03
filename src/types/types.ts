@@ -24,6 +24,7 @@ export interface IButtonProps {
   uppercase?: boolean,
   buttonSize?: 'small' | 'medium' | 'large',
   children?: React.ReactNode,
+  form?: string,
   onClick?: (e: React.MouseEvent) => void,
 }
 

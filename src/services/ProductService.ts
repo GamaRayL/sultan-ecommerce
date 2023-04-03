@@ -8,15 +8,15 @@ export const productAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
   endpoints: (builder) => ({
 
-    fetchFiltredProducts: builder.query<IProduct[], { limit: number, page: number, gte: string, lte: string/* , vendor: string */; }>({
-      query: ({ limit = 15, page = 1, gte = '0', lte = '10000'/* , vendor */ }) => ({
+    fetchFiltredProducts: builder.query<IProduct[], { limit: number, page: number, gte: string, lte: string, vendor: string; }>({
+      query: ({ limit = 15, page = 1, gte = '0', lte = '10000', vendor }) => ({
         url: '/products',
         params: {
           _limit: limit,
           _page: page,
           price_gte: gte,
           price_lte: lte,
-          /* vendor: vendor */
+          vendor: vendor || undefined
         }
         // (vendor: string) => {
         //   if (!vendor) return '/products';
