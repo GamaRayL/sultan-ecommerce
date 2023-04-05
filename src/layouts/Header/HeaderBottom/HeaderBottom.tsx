@@ -33,7 +33,7 @@ export const HeaderBottom: FC = () => {
           <use xlinkHref={`${sprite}#logo`}></use>
         </svg>
       </div>
-      <Button icon="catalog">Каталог</Button>
+      <Button icon="catalog" onClick={() => navigate("home/catalog")}>Каталог</Button>
       <div className={styles.line}></div>
       <InputField placeholder="Поиск" mode />
       <div className={styles.consultant}>

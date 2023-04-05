@@ -8,6 +8,7 @@ import BasketPage from "@/pages/BasketPage/BasketPage";
 import CatalogPage from "@/pages/CatalogPage/CatalogPage";
 import NotfoundPage from "@/pages/NotfoundPage/NotfoundPage";
 import HomePage from "@/pages/HomePage/HomePage";
+import AdminPage from '@/pages/AdminPage';
 import "@/styles/styles.module.scss";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route path="home" element={<HomePage />} />
+              <Route path="home/admin" element={<AdminPage />} />
               <Route path="home/catalog" element={<CatalogPage />} />
               <Route path="home/catalog/:id" element={<CardPage />} />
               <Route path="home/catalog/basket" element={<BasketPage />} />

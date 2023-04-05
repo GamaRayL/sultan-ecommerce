@@ -1,7 +1,6 @@
 @import "@/styles/_variables";
 
 .filter {
-  max-width: 248px;
   &__title {
     text-transform: uppercase;
   }
@@ -71,5 +70,19 @@
   }
   &__icon {
     font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .filter {
+    &__tools {
+      justify-content: space-between;
+    }
+    &__title {
+      font-size: $small14;
+      color: $darkBlue;
+      text-transform: none;
+      font-weight: normal;
+    }
   }
 }

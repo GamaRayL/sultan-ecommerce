@@ -22,6 +22,8 @@ export const Breadcrumbs: FC = () => {
         renamedCrumb = "Главная";
       } else if (crumb == "basket") {
         renamedCrumb = "Корзина";
+      } else if (crumb == "admin") {
+        renamedCrumb = "Админ панель";
       } else renamedCrumb = `${product!.brand} ${product!.name}`;
 
       return (

@@ -45,7 +45,9 @@ const CatalogPage: FC = () => {
       </div>
 
       <div className={styles.catalog}>
-        <Filter setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} setVendor={setVendor} getCare={getCare} />
+        <div className={styles.catalog__filter}>
+          <Filter setPriceFrom={setPriceFrom} setPriceTo={setPriceTo} setVendor={setVendor} getCare={getCare} />
+        </div>
         <div className={styles.catalog__box}>
           {isLoading && <div className={styles.catalog__other}><Loader /></div>}
           {error && <div className={styles.catalog__other}><h2>Возникла ошибка при загрузке контента</h2></div>}

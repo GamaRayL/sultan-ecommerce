@@ -7,6 +7,10 @@
   gap: 12px;
   border: none;
   cursor: pointer;
+  transition: .2s;
+  &:hover {
+    transform: scale(1.1);
+  }
   &_primary {
     background-color: $orange;
   }

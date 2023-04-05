@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { addProduct } from '@/store/reducers/basketSlice';
 import Button from "@/components/Button";
 import ICard from './type';
@@ -9,6 +9,9 @@ import styles from "./styles.module.scss";
 
 export const Card: FC<ICard> = ({ product }) => {
   const dispatch = useAppDispatch();
+  const items = useAppSelector(state => state.basket.basketItems);
+
+  console.log(items);
 
   function onClickAddProductHandler() {
     dispatch(addProduct(product));

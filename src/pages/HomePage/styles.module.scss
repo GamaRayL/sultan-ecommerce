@@ -1,47 +1,6 @@
 @import "@/styles/_variables";
 
-fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.home {
+  display: flex;
   gap: 40px;
-}
-
-.create {
-  grid-column: 1/2;
-  &__item {
-    margin: 10px;
-  }
-  &__title {
-    font-size: $small16;
-    font-weight: bold;
-    color: $darkBlue;
-    margin: 0 0 5px 5px;
-  }
-  &__box {
-    margin-left: 5px;
-  }
-  &__care {
-    margin-left: 5px;
-  }
-}
-
-.list {
-  grid-column: 2/5;
-  &__tools {
-    display: flex;
-    gap: 20px;
-  }
-  &__item {
-    word-wrap: break-word;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid $darkBlue;
-    border-radius: 10px;
-  }
 }
