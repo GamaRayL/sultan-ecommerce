@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 export interface IProduct {
   id: number;
@@ -8,43 +8,24 @@ export interface IProduct {
   barcode: string;
   vendor: string;
   price: number;
+  totalprice: number;
   size: string;
   article: string;
   description: string;
   package: string;
   target: string[];
+  quantity: number;
 }
 
-export interface IButtonProps {
-  icon?: 'search' | 'download' | 'basket' | 'catalog' | 'delete',
-  type?: 'button' | 'submit',
-  color?: 'primary' | 'inherit',
-  variant?: 'contained' | 'outlined',
-  iconSize?: number,
-  uppercase?: boolean,
-  buttonSize?: 'small' | 'medium' | 'large',
-  children?: React.ReactNode,
-  form?: string,
-  onClick?: (e: React.MouseEvent) => void,
-}
 
-export interface IDescriptionList {
-  prop: string;
-  value: string | number | undefined;
-}
 
-export interface IInputField {
-  placeholder?: string;
-  mode?: boolean;
-  icon?: 'search' | 'arrow';
-  onChange?: ((e: string) => void) | undefined;
-}
 
-export interface IPaginationProps {
+
+export interface IPaginations {
   products: IProduct[] | undefined;
 }
 
-export interface ProductState {
+export interface IProductState {
   products: IProduct[],
   currentPage: number,
   perPage: number,

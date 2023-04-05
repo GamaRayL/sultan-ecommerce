@@ -1,10 +1,9 @@
-@import '@/styles/_variables';
+@import "@/styles/_variables";
 
 .card {
   display: flex;
   flex-direction: column;
   padding: 30px 22px;
-  width: 326px;
   max-height: 490px;
   border-radius: 10px;
   box-shadow: 0 14px 39px -11px #0000000f;

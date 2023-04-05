@@ -1,1 +1,0 @@
-export { CareCard as default } from './CareCard';

@@ -1,0 +1,94 @@
+@import "@/styles/_variables";
+$dottedLine: 1px dashed rgba(63, 78, 101, .3);
+$dottedLineLight: 1px dashed rgba(63, 78, 101, .2);
+
+.line {
+  background-image: linear-gradient(rgba(63, 78, 101, 0.2) 60%, rgba(255, 255, 255, 0) 0%);
+  background-position: right;
+  background-size: 1px 4px;
+  background-repeat: repeat-y;
+  padding-right: 10px;
+  height: 100%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 50px 0;
+  border-top: $dottedLine;
+  &__img {
+    display: flex;
+    justify-content: center;
+    width: 281px;
+    height: 181px;
+    margin-right: 20px;
+  }
+  &__tools {
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+  &__price {
+    padding: 0 44px;
+    margin: 0;
+    font-size: $medium30;
+    font-weight: $bold;
+    white-space: nowrap;
+  }
+  &__delete {
+    padding-left: 44px;
+  }
+  &:last-child {
+    border-bottom: $dottedLine;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &__img {
+    width: 9px;
+    height: 15px;
+    fill: $darkBlue;
+    opacity: .23;
+  }
+}
+
+.description {
+  max-width: 508px;
+  margin-right: 85px;
+  &__title {
+    font-size: $medium30;
+    font-weight: $bold;
+    color: $black;
+  }
+  &__info {
+    font-size: $smaller12;
+    font-weight: $light;
+    color: $darkBlue;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 44px;
+  &__number {
+    font-weight: $medium;
+  }
+  &__decrease, &__increase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: $darkBlue;
+    font-weight: $light;
+    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+  }
+}

@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { IDescriptionList } from '@/types';
+import React, { FC } from "react";
+import IDescriptionList from '@/components/DescriptionList/type';
 import styles from "./styles.module.scss";
 
 export const DescriptionList: FC<IDescriptionList> = ({ prop, value }) => {

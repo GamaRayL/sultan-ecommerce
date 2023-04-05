@@ -1,15 +1,18 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { IProduct } from '@/types';
-import Button from '@/components/Button';
-import sprite from '@/assets/sprite/sprite.svg';
-import styles from './styles.module.scss';
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "@/hooks";
+import { addProduct } from '@/store/reducers/basketSlice';
+import Button from "@/components/Button";
+import ICard from './type';
+import sprite from "@/assets/sprite/sprite.svg";
+import styles from "./styles.module.scss";
 
-interface ICardProps {
-  product: IProduct;
-}
+export const Card: FC<ICard> = ({ product }) => {
+  const dispatch = useAppDispatch();
 
-export const Card = ({ product }: ICardProps) => {
+  function onClickAddProductHandler() {
+    dispatch(addProduct(product));
+  }
 
   return (
     <div className={styles.card}>
@@ -51,7 +54,7 @@ export const Card = ({ product }: ICardProps) => {
         <div className={styles.payment}>
           <span className={styles.payment__value}>{product.price} ₸</span>
           <div className={styles.payment__btn}>
-            <Button icon='basket' buttonSize='small' iconSize={27} uppercase>
+            <Button onClick={onClickAddProductHandler} icon="basket" buttonSize="small" iconSize={27} uppercase>
               В корзину
             </Button>
           </div>

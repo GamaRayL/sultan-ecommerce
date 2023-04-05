@@ -1,32 +1,36 @@
-import React, { FC, useState } from 'react';
-import { IInputField } from '@/types';
-import sprite from '@/assets/sprite/sprite.svg';
+import React, { FC, useState } from "react";
+import sprite from "@/assets/sprite/sprite.svg";
+import IInputField from './type';
 import styles from "./styles.module.scss";
 
-export const InputField: FC<IInputField> = ({ onChange, placeholder, mode, icon }) => {
-  const [value, setValue] = useState('');
+export const InputField: FC<IInputField> = ({ onChange, placeholder, mode, icon, name, required }) => {
+  const [value, setValue] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
     setValue(value);
-    onChange?.(value);
+    onChange?.(event);
   };
 
   return (
     <div className={styles.field}>
       <input
+        required={required ? true : false}
+        name={name}
         value={value}
         onChange={handleChange}
         type="text"
         placeholder={placeholder}
-        className={`${styles.input} ${mode ? styles.input_mode : ''}`}
+        className={`${styles.input} ${mode ? styles.input_mode : ""}`}
       />
-      <button className={styles.btn}>
-        <svg className={styles.btn__icon}>
-          <use xlinkHref={`${sprite}#${icon || 'search'}`}></use>
-        </svg>
-      </button>
+      {icon &&
+        <button className={styles.btn}>
+          <svg className={styles.btn__icon}>
+            <use xlinkHref={`${sprite}#${icon || "search"}`}></use>
+          </svg>
+        </button>
+      }
     </div >
   );
 };

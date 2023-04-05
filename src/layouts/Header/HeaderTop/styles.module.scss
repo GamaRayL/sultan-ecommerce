@@ -1,5 +1,5 @@
-@import '@/styles/_variables';
-@import '../styles.module.scss';
+@import "@/styles/_variables";
+@import "../styles.module.scss";
 
 .top {
   display: flex;
@@ -84,11 +84,11 @@
     transition-duration: .2s;
   }
   &__btn > span::before {
-    content: '';
+    content: "";
     top: 4px;
   }
   &__btn > span::after {
-    content: '';
+    content: "";
     bottom: 4px;
   }
 }

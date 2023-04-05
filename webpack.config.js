@@ -1,40 +1,40 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const plugins = [
   new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
+    filename: "[name].[contenthash].css",
   }),
   new HTMLWebpackPlugin({
-    template: './src/index.html',
+    template: "./src/index.html",
   }),
 ];
 
 const devServer = {
   port: 8080,
-  watchFiles: ['src/*.html'],
+  watchFiles: ["src/*.html"],
   historyApiFallback: true,
-  static: path.resolve(__dirname, './dist'),
+  static: path.resolve(__dirname, "./dist"),
   hot: true,
 };
 
 module.exports = {
-  mode: 'development',
-  entry: ['./src/index.tsx'],
+  mode: "development",
+  entry: ["./src/index.tsx"],
   output: {
-    filename: '[name].[hash].js',
-    path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[hash][ext][query]',
-    publicPath: '/',
+    filename: "[name].[hash].js",
+    path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: "assets/[hash][ext][query]",
+    publicPath: "/",
     clean: true,
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", "json"],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      assets: path.resolve(__dirname, 'public'),
+      "@": path.resolve(__dirname, "src"),
+      assets: path.resolve(__dirname, "public"),
     },
   },
   devtool: "source-map",
@@ -50,33 +50,33 @@ module.exports = {
             use: [
               MiniCssExtractPlugin.loader,
               {
-                loader: 'css-loader',
+                loader: "css-loader",
                 options: {
                   modules: {
-                    localIdentName: '[local]__[hash:base64:5]',
+                    localIdentName: "[local]__[hash:base64:5]",
                   },
                 },
               },
-              'postcss-loader',
-              'sass-loader',
+              "postcss-loader",
+              "sass-loader",
             ],
           },
           {
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
           },
         ],
       },
       {
         test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ["@babel/preset-env"],
           },
         },
       },
@@ -84,9 +84,9 @@ module.exports = {
         test: /\.m?jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
@@ -94,12 +94,12 @@ module.exports = {
         test: /\.m?tsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
             ],
           },
         },
@@ -108,13 +108,13 @@ module.exports = {
         test: /\.m?ts$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
           },
         },
       },
-      { test: /\.(html)$/, use: ['html-loader'] },
+      { test: /\.(html)$/, use: ["html-loader"] },
     ],
   },
 };

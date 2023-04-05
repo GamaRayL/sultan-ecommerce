@@ -1,24 +1,44 @@
-import React, { FormEvent, FormEventHandler, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import sprite from '@/assets/sprite/sprite.svg';
+import React, { FC, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { productAPI } from "@/services/productService/productService";
+import sprite from "@/assets/sprite/sprite.svg";
+import ISort from './types';
 import styles from "./styles.module.scss";
-// import { sortProducts } from '@/features/product/productSlice';
 
-export const Sort = () => {
+export const Sort: FC<ISort> = ({ setSort, setOrder }) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('Название');
+  const [value, setValue] = useState("Название");
   const [isShow, setIsShow] = useState(false);
-  const array = ['Название', 'Цена (по возрастанию)', 'Цена (по убыванию)'];
+  const array = ["Название", "Цена (по возрастанию)", "Цена (по убыванию)"];
 
   useEffect(() => {
-    // dispatch(sortProducts(value));
-
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
-      const current = document.querySelector('div[class*="sort__container"]');
+      const current = document.querySelector("div[class*='sort__container']");
       if (current !== target.parentNode) setIsShow(false);
     });
   }, [value]);
+
+  function getSort(i: string) {
+    setValue(i);
+
+    switch (i) {
+      case "Название":
+        setSort("brand");
+        setOrder("asc");
+        break;
+      case "Цена (по возрастанию)":
+        setSort("price");
+        setOrder("asc");
+        break;
+      case "Цена (по убыванию)":
+        setSort("price");
+        setOrder("desc");
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div className={styles.sort}>
@@ -32,7 +52,7 @@ export const Sort = () => {
 
           {isShow &&
             <ul className={styles.list}>
-              {array.map(i => <li className={styles.item} key={i} onClick={() => setValue(i)}>{i}</li>)}
+              {array.map(i => <li className={styles.item} key={i} onClick={() => getSort(i)}>{i}</li>)}
             </ul>
           }
 

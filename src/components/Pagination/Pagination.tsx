@@ -1,24 +1,37 @@
-import React, { FC } from 'react';
-import { productAPI } from '@/services/ProductService';
+import React, { FC } from "react";
+import { productAPI } from "@/services/productService/productService";
 import { setCurrentPage } from '@/store/reducers/productSlice';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import sprite from '@/assets/sprite/sprite.svg';
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import sprite from "@/assets/sprite/sprite.svg";
 import styles from "./styles.module.scss";
 
-export const Pagination = () => {
-  const { data: products, isSuccess } = productAPI.useFetchSortedProductsQuery({ sort: 'vendor', order: "asc" });
+export const Pagination: FC = () => {
+  const { data: products, isSuccess } = productAPI.useFetchSortedProductsQuery({ sort: "vendor", order: "asc" });
 
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(state => state.productReducer.currentPage);
 
   let pages = [];
 
-  if (!isSuccess) return;
-
-  let perPage = Math.ceil(products.length / 15);
-  for (let i = 1; i <= perPage; i++) {
-    pages.push(i);
+  if (isSuccess) {
+    let perPage = Math.ceil(products.length / 15);
+    for (let i = 1; i <= perPage; i++) {
+      pages.push(i);
+    }
   }
+
+  const onClickPageHandler = (page: number) => {
+    dispatch(setCurrentPage(page));
+  };
+
+  const onClickPagePrevHandler = () => {
+    dispatch(setCurrentPage(currentPage - 1));
+  };
+
+  const onClickPageNextHandler = () => {
+    if (currentPage === pages.length) return;
+    dispatch(setCurrentPage(currentPage + 1));
+  };
 
   return (
     <div className={styles.pages}>
@@ -54,17 +67,6 @@ export const Pagination = () => {
     </div>
   );
 
-  function onClickPageHandler(page: any) {
-    dispatch(setCurrentPage(page));
-  };
 
-  function onClickPagePrevHandler() {
-    dispatch(setCurrentPage(currentPage - 1));
-  };
-
-  function onClickPageNextHandler() {
-    if (currentPage === pages.length) return;
-    dispatch(setCurrentPage(currentPage + 1));
-  };
 
 };

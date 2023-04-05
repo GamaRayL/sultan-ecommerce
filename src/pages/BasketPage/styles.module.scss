@@ -1,0 +1,24 @@
+@import "@/styles/_variables";
+
+.header {
+  &__title {
+    font-size: $large40;
+    font-weight: $medium;
+    text-transform: uppercase;
+  }
+}
+
+.items {
+  margin-bottom: 50px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__totalprice {
+    font-size: $medium30;
+    font-weight: $bold;
+    white-space: nowrap;
+  }
+}

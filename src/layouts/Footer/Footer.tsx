@@ -1,10 +1,10 @@
-import React from 'react';
-import sprite from '@/assets/sprite/sprite.svg';
+import React, { FC } from "react";
+import sprite from "@/assets/sprite/sprite.svg";
+import InputField from "@/components/InputField";
+import Button from "@/components/Button";
 import styles from "./styles.module.scss";
-import InputField from '@/components/InputField';
-import Button from '@/components/Button';
 
-export const Footer = () => {
+export const Footer: FC = () => {
   return (
     <footer>
       <div className={styles.theme}>
@@ -24,7 +24,7 @@ export const Footer = () => {
               </div>
               <div className={styles.subscribe}>
                 <p className={styles.subscribe__info}>Подпишись на скидки и акции</p>
-                <InputField placeholder='Введите ваш E-mail' icon='arrow' />
+                <InputField placeholder="Введите ваш E-mail" icon="arrow" />
               </div>
             </div>
             <ul className={`${styles.list} ${styles.list_menu}`}>
@@ -62,7 +62,7 @@ export const Footer = () => {
             </ul>
             <div className={styles.price}>
               <h3 className={`${styles.title} ${styles.price__title}`}>Скачать прайс-лист:</h3>
-              <Button icon='download' buttonSize='large'>Прайс-лист</Button>
+              <Button icon="download" buttonSize="large">Прайс-лист</Button>
             </div>
             <div className={styles.social}>
               <p className={styles.social__info}>Связь в мессенджерах:</p>
@@ -84,7 +84,7 @@ export const Footer = () => {
               <ul className={styles.consultant}>
                 <li className={styles.info_weight} > +7(777) 490-00-91</li>
                 <li className={styles.info_light}>время работы: 9:00-20:00</li>
-                <li><a href='#' className={styles.info_call} target="_blank">Заказать звонок</a></li>
+                <li><a href="#" className={styles.info_call} target="_blank">Заказать звонок</a></li>
               </ul>
               <ul className={styles.contact}>
                 <li className={styles.info_weight}>opt.sultan@mail.ru</li>

@@ -1,4 +1,4 @@
-@import '@/styles/_variables';
+@import "@/styles/_variables";
 
 .field {
   display: flex;
@@ -17,7 +17,7 @@
   background-color: transparent;
   width: -webkit-fill-available;
   &::placeholder {
-    content: 'bro';
+    content: "bro";
     color: $darkBlue;
     opacity: .6;
   }
@@ -50,7 +50,7 @@
 //   .input {
 //     background-color: transparent;
 //     &::placeholder {
-//       content: '';
+//       content: "";
 //       color: $darkBlue;
 //       opacity: 1;
 //       font-weight: $semiBold;

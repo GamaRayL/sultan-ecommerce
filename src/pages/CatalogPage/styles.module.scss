@@ -1,4 +1,4 @@
-@import '@/styles/_variables';
+@import "@/styles/_variables";
 
 .catalog {
   display: grid;
@@ -14,7 +14,7 @@
     margin-top: 50px;
   }
   &__other {
-    grid-column: 1/6;
+    grid-column: 2/5;
     justify-self: center;
   }
 }
@@ -35,4 +35,16 @@
     font-weight: $medium;
     text-transform: uppercase;
   }
+}
+
+.care {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 18px 16px;
+  border-radius: 10px;
+  color: $darkBlue;
+  box-shadow: 0 15px 70px -11px #2b1c010a;
+  cursor: pointer;
 }

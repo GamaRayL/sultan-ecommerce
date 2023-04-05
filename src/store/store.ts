@@ -1,9 +1,11 @@
-import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
-import productReducer from '@/store/reducers/productSlice';
-import { productAPI } from '@/services/ProductService';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import productReducer from "@/store/reducers/productSlice/productSlice";
+import basketReducer from "@/store/reducers/basketSlice/basketSlice";
+import { productAPI } from "@/services/productService/productService";
 
 const rootReducer = combineReducers({
   productReducer,
+  basket: basketReducer,
   [productAPI.reducerPath]: productAPI.reducer
 });
 

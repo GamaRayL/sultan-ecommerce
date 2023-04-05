@@ -1,8 +1,12 @@
-@import '@/styles/_variables';
+@import "@/styles/_variables";
 
 .main {
   max-width: 1370px;
-  padding: 0;
+  padding: 0 15px;
   margin: 0 auto;
   margin-bottom: 80px;
+}
+
+.container {
+  padding: 0 15px;
 }

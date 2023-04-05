@@ -1,26 +1,8 @@
-import React, { useState } from 'react';
-import sprite from '@/assets/sprite/sprite.svg';
+import React, { FC, useState } from "react";
+import sprite from "@/assets/sprite/sprite.svg";
 import styles from "./styles.module.scss";
-import { useOutsideClick } from '@/hooks/useOutsideClick';
 
-export const HeaderTop = () => {
-  const [showMenu, setShowMenu] = useState(false);
-
-  const handleClick = () => {
-    setShowMenu(true);
-  };
-
-
-  const handleClickOutside = () => {
-    setShowMenu(false);
-  };
-
-  const ref = useOutsideClick(handleClickOutside);
-
-  const handleHeaderClick = (event: any) => {
-
-    event.stopPropagation();
-  };
+export const HeaderTop: FC = () => {
 
   return (
     <div className={styles.top}>
@@ -49,9 +31,9 @@ export const HeaderTop = () => {
         </div>
       </div>
 
-      <div className={styles.menu} onClick={handleHeaderClick}>
+      <div className={styles.menu}>
         <input id={styles.menu__toggle} type="checkbox" />
-        <label className={styles.menu__btn} htmlFor={styles.menu__toggle} ref={ref} onClick={handleClick} >
+        <label className={styles.menu__btn} htmlFor={styles.menu__toggle}>
           <span></span>
         </label>
         {true && <nav className={styles.menu__nav}>

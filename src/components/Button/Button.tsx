@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
-import { IButtonProps } from '@/types';
-import sprite from '@/assets/sprite/sprite.svg';
-import styles from './styles.module.scss';
+import React, { FC } from "react";
+import sprite from "@/assets/sprite/sprite.svg";
+import IButton from './type';
+import styles from "./styles.module.scss";
 
-export const Button: FC<IButtonProps> = (props) => {
+export const Button: FC<IButton> = (props) => {
   const { icon, children, form, type, onClick, buttonSize, variant, color, iconSize, uppercase } = props;
 
   const isIcon = icon &&
@@ -15,8 +15,8 @@ export const Button: FC<IButtonProps> = (props) => {
       <svg
         className={`
           ${styles.icon}
-          ${styles[`icon_${variant || 'contained'}`]}
-          ${styles[`icon_${color || 'primary'}`]}
+          ${styles[`icon_${variant || "contained"}`]}
+          ${styles[`icon_${color || "primary"}`]}
       `}>
         <use xlinkHref={`${sprite}#${icon}`}></use>
       </svg>
@@ -27,9 +27,9 @@ export const Button: FC<IButtonProps> = (props) => {
     <button
       className={`
         ${styles.btn}
-        ${styles[`btn_${color || 'primary'}`]}
-        ${styles[`btn_${buttonSize || 'medium'}`]}
-        ${styles[`btn_${variant || 'contained'}`]}
+        ${styles[`btn_${color || "primary"}`]}
+        ${styles[`btn_${buttonSize || "medium"}`]}
+        ${styles[`btn_${variant || "contained"}`]}
       `}
       type={type}
       onClick={onClick}
@@ -37,12 +37,12 @@ export const Button: FC<IButtonProps> = (props) => {
     >
       {
         children && <span
-          style={{ textTransform: uppercase ? 'uppercase' : "none" }}
+          style={{ textTransform: uppercase ? "uppercase" : "none" }}
           className={`
             ${styles.text}
-            ${styles[`text_${variant || 'contained'}`]}
-            ${styles[`text_${color || 'primary'}`]}
-            ${styles[`text_${variant || 'contained'}`]}
+            ${styles[`text_${variant || "contained"}`]}
+            ${styles[`text_${color || "primary"}`]}
+            ${styles[`text_${variant || "contained"}`]}
             `}>
           {children}
         </span>

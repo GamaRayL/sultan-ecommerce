@@ -1,6 +1,5 @@
-import { fetchProducts } from '@/store/reducers/actionCreators';
-import { IProduct } from '@/types';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProduct } from "@/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ProductState {
   currentPage: number;
@@ -11,12 +10,12 @@ const initialState: ProductState = {
 };
 
 export const productSlice = createSlice({
-  name: 'product',
+  name: "product",
   initialState,
   reducers: {
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
   },
 });

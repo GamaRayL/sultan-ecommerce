@@ -1,1 +1,1 @@
-export { DescriptionList as default } from './DescriptionList';
+export { DescriptionList as default } from "./DescriptionList";

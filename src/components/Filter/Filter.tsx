@@ -1,109 +1,108 @@
-import React, { useEffect, useState, FC, Dispatch, SetStateAction } from 'react';
-import { productAPI } from '@/services/ProductService';
-import Button from '@/components/Button';
-import InputField from '@/components/InputField';
-import Input from '@/components/Input';
-import Loader from '@/components/Loader';
-import styles from './styles.module.scss';
+import React, { useEffect, useState, FC, FormEvent, MouseEvent, ChangeEvent } from "react";
+import { productAPI } from "@/services/productService/productService";
+import Button from "@/components/Button";
+import InputField from "@/components/InputField";
+import Input from "@/components/Input";
+import Loader from "@/components/Loader";
+import { IProduct } from '@/types';
+import IFilter from './type';
+import styles from "./styles.module.scss";
 
-interface FilterProps {
-  setPriceFrom: Dispatch<SetStateAction<string>>;
-  setPriceTo: Dispatch<SetStateAction<string>>;
-  setVendor: Dispatch<SetStateAction<string>>;
-}
+export const Filter: FC<IFilter> = (props) => {
+  const { setPriceFrom, setPriceTo, setVendor, getCare } = props;
+  const { data: productsPriceHighToLow, isLoading } = productAPI.useFetchSortedProductsQuery({ sort: "price", order: "desc" });
+  const { data: productsVendorHightToLow } = productAPI.useFetchSortedProductsQuery({ sort: "vendor", order: "asc" });
+  const maxPrice = productsPriceHighToLow?.[0].price;
 
-export const Filter: FC<FilterProps> = (props) => {
-  const { setPriceFrom, setPriceTo, setVendor } = props;
-  const [valuePriceFrom, setValuePriceFrom] = useState('0');
-  const [valuePriceTo, setValuePriceTo] = useState('385'); // Здесь заглушка. Как изменить на динамические данные с maxPrice
+  const [valuePriceFrom, setValuePriceFrom] = useState(0);
+  const [valuePriceTo, setValuePriceTo] = useState<number | undefined>(maxPrice ?? 10000);
   const [vendorsObject, setVendorsObject] = useState({});
-  const currentVendorArr: string[] = [];
-
-  const { data: productsPriceHighToLow, isLoading, error } = productAPI.useFetchSortedProductsQuery({ sort: 'price', order: "desc" });
-  const { data: productsVendorHightToLow } = productAPI.useFetchSortedProductsQuery({ sort: 'vendor', order: "asc" });
-  // Проблема с checkbox после отправки формы. Нужно uncheck`нуть
-
-  const maxPrice = String(productsPriceHighToLow?.[0].price);
-
-  function onSubmitHandler(e: any) {
-    e.preventDefault();
-
-    if (+valuePriceFrom > +valuePriceTo) return;
-    setPriceFrom(valuePriceFrom);
-    setPriceTo(valuePriceTo);
-    setVendor(currentVendorArr);
-    e.target.reset();
-    console.log(e.target)
-    console.log(currentVendorArr);
-  }
-
-  function onClickResetHandler(e: any) {
-    e.preventDefault();
-
-    setPriceFrom(valuePriceFrom);
-    setPriceTo(maxPrice);
-    setValuePriceFrom('0');
-    setValuePriceTo(maxPrice);
-  }
-
-  function onChangePriceFrom(price: any) {
-    setValuePriceFrom(price);
-  }
-
-  function onChangePriceTo(price: any) {
-    setValuePriceTo(price);
-  }
+  let currentVendorArr: string[] = [];
 
   useEffect(() => {
     let obj: any = {};
 
-    productsVendorHightToLow && productsVendorHightToLow.map((product: any) => {
-      if (obj[product.vendor]) {
-        obj[product.vendor] += 1;
-      } else obj[product.vendor] = 1;
+    productsVendorHightToLow && productsVendorHightToLow.forEach((product: IProduct) => {
+      const { vendor } = product;
+      const oldValue = obj[vendor];
+
+      obj[vendor] = oldValue ? oldValue + 1 : 1;
     });
 
     setVendorsObject(obj);
   }, [productsVendorHightToLow]);
 
+  const onSubmitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    const formNode = e.target as HTMLFormElement;
 
-  function onSearchVendor(value: string) {
-    const lowerValue = value.toLowerCase();
+    if (+valuePriceFrom > +valuePriceTo!) return;
+    setPriceFrom(valuePriceFrom);
+    setPriceTo(valuePriceTo);
+    setVendor(currentVendorArr.join("&vendor[]="));
+    setValuePriceFrom(0);
+    setValuePriceTo(maxPrice);
+    formNode.reset();
+  };
+
+  const onClickResetHandler = (e: MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formNode = e.currentTarget.form as HTMLFormElement;
+
+    setPriceFrom(valuePriceFrom);
+    setPriceTo(maxPrice);
+    setValuePriceFrom(0);
+    setVendor("");
+    setValuePriceTo(maxPrice);
+
+    formNode.reset();
+  };
+
+  const onChangePriceFrom = (value: string) => {
+    const price = Number(value);
+    setValuePriceFrom(price);
+  };
+
+  const onChangePriceTo = (value: string) => {
+    const price = Number(value);
+    setValuePriceTo(price);
+  };
+
+  const onSearchVendor = (event: ChangeEvent<HTMLInputElement>) => {
+    const lowerValue = event.target.value.toLowerCase();
 
     let obj: any = {};
 
     productsVendorHightToLow && productsVendorHightToLow.filter(product => product.vendor.toLowerCase()
       .includes(lowerValue))
-      .map((product: any) => {
-        if (obj[product.vendor]) {
-          obj[product.vendor] += 1;
-        } else obj[product.vendor] = 1;
+      .forEach((product: IProduct) => {
+        const { vendor } = product;
+        const oldValue = obj[vendor];
+
+        obj[vendor] = oldValue ? oldValue + 1 : 1;
       });
 
     setVendorsObject(obj);
-  }
+  };
 
 
-  function onChangeChooseVendor(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
-    const checked = e.target.checked;
+  const onClickChooseVendor = (e: React.MouseEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
 
     if (!currentVendorArr.includes(value)) {
       currentVendorArr.push(value);
     } else {
       currentVendorArr.splice(currentVendorArr.indexOf(value), 1);
     }
-    console.log(currentVendorArr);
-  }
-
-
+  };
 
   return (
     <div className={styles.filter}>
       {isLoading && <Loader />}
       {productsPriceHighToLow && <>
         <h3 className={`${styles.filter__title} ${styles.title}`}>Подбор по параметрам</h3>
-        <form className={styles.form} id="filter-form" onSubmit={(e) => onSubmitHandler(e)}>
+        <form id="my-form" className={styles.form} onSubmit={onSubmitHandler}>
           <div className={styles.price}>
             <p className={styles.price__title}>Цена
               <span className={styles.price__currency}> ₸</span>
@@ -120,17 +119,17 @@ export const Filter: FC<FilterProps> = (props) => {
           <div className={styles.vendor}>
             <p className={styles.title}>Производитель</p>
             <div className={styles.vendor__input}>
-              <InputField onChange={onSearchVendor} icon='search' placeholder='Поиск...' />
+              <InputField onChange={onSearchVendor} icon="search" placeholder="Поиск..." />
             </div>
 
             <div className={styles.vendor__list}>
               {vendorsObject &&
-                Object.keys(vendorsObject).map((vendor) => {
+                Object.entries(vendorsObject).map(([name, value]) => {
                   return (
-                    <label key={vendor} className={styles.vendor__label} >
-                      <input className={styles.vendor__checkbox} type="checkbox" value={vendor} onChange={(e) => onChangeChooseVendor(e)} />
-                      <span className={styles.vendor__name}>{vendor}</span>
-                      <span className={styles.vendor__sum}>({vendorsObject[vendor]})</span>
+                    <label key={name} className={styles.vendor__label} >
+                      <input className={styles.vendor__checkbox} type="checkbox" value={name} onClick={onClickChooseVendor} />
+                      <span className={styles.vendor__name}>{name}</span>
+                      <span className={styles.vendor__name}>({String(value)})</span>
                     </label>
                   );
                 })
@@ -144,12 +143,12 @@ export const Filter: FC<FilterProps> = (props) => {
         </form >
 
         <div className={styles.filter__tools}>
-          <Button form='filter-form' type='submit'>Показать</Button>
-          <Button onClick={onClickResetHandler} icon='delete' iconSize={25} buttonSize='small' />
+          <Button form="my-form" type="submit">Показать</Button>
+          <Button form="my-form" onClick={onClickResetHandler} icon="delete" iconSize={25} buttonSize="small" />
         </div>
 
-        <h3 className={`${styles.filter__title} ${styles.title}`}>Уход за руками</h3>
-        <h3 className={`${styles.filter__title} ${styles.title}`}>Уход за телом</h3>
+        <h3 className={`${styles.filter__title} ${styles.title}`} id="hands" onClick={getCare}>Уход за руками</h3>
+        <h3 className={`${styles.filter__title} ${styles.title}`} id="hands" onClick={getCare}>Уход за телом</h3>
       </>}
 
     </div >

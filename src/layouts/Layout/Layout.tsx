@@ -1,15 +1,17 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Breadcrumbs from '@/components/Breadcrumbs';
-import Header from '@/layouts/Header';
-import Footer from '@/layouts/Footer';
+import React, { FC } from "react";
+import { Outlet } from "react-router-dom";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Header from "@/layouts/Header";
+import Footer from "@/layouts/Footer";
 import styles from "./styles.module.scss";
 
-export const Layout = () => {
+export const Layout: FC = () => {
   return (
     <>
       <Header />
-      <Breadcrumbs />
+      <div className={styles.container}>
+        <Breadcrumbs />
+      </div>
       <main className={styles.main}>
         <Outlet />
       </main>

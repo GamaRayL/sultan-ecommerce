@@ -1,6 +1,6 @@
-@import 'reset';
-@import 'variables';
-@import 'extends';
+@import "reset";
+@import "variables";
+@import "extends";
 
 img {
   display: block;
@@ -15,7 +15,7 @@ svg {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: $small14;
   margin: 0;
 }
