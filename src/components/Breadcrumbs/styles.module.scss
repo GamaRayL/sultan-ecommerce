@@ -9,10 +9,8 @@
 }
 
 .crumb {
-  background-image: linear-gradient(rgba(63, 78, 101, .30) 60%, rgba(255, 255, 255, 0) 0%);
-  background-position: right;
+  background: linear-gradient(rgba(63, 78, 101, .30) 60%, rgba(255, 255, 255, 0) 0%) repeat-y right;
   background-size: 1px 4px;
-  background-repeat: repeat-y;
   padding-right: 10px;
   &:last-child {
     opacity: .50;

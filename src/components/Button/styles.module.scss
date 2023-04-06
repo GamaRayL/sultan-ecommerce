@@ -12,10 +12,10 @@
     transform: scale(1.1);
   }
   &_primary {
-    background-color: $orange;
+    background: $orange;
   }
   &_inherit {
-    background-color: $darkBlue;
+    background: $darkBlue;
   }
   &_contained {
     border-radius: 80px;

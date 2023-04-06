@@ -11,7 +11,7 @@
   --in-timing-function: ease-out;
   width: calc( 3 * var(--offset) + var(--square));
   height: calc( 2 * var(--offset) + var(--square));
-  padding: 0px;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -29,8 +29,8 @@
   width: var(--square);
   height: var(--square);
   position: absolute;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   font-size: 6pt;
   color: black;
 }
