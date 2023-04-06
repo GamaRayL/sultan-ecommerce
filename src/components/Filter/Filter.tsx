@@ -22,7 +22,7 @@ export const Filter: FC<IFilter> = (props) => {
   let currentVendorArr: string[] = [];
 
   useEffect(() => {
-    let obj: any = {};
+    let obj: Record<string, number> = {};
 
     productsVendorHightToLow && productsVendorHightToLow.forEach((product: IProduct) => {
       const { vendor } = product;
@@ -76,7 +76,7 @@ export const Filter: FC<IFilter> = (props) => {
   const onSearchVendor = (event: ChangeEvent<HTMLInputElement>) => {
     const lowerValue = event.target.value.toLowerCase();
 
-    let obj: any = {};
+    let obj: Record<string, number> = {};
 
     productsVendorHightToLow && productsVendorHightToLow.filter(product => product.vendor.toLowerCase()
       .includes(lowerValue))
