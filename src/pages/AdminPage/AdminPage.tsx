@@ -84,16 +84,16 @@ export const AdminPage = () => {
           <div className={styles.create__item}>
             <p className={styles.create__title}>Тип ухода</p>
             <div className={styles.create__care}>
-              <label htmlFor="body">Тело</label>
+              {/* <label htmlFor="body">Тело</label>
               <input id="body" type="checkbox" name="target" value="body" />
               <label htmlFor="body">Руки</label>
-              <input id="hands" type="checkbox" name="target" value="hands" />
-              {/* <fieldset id="target" onChange={onChangeHandler}>
+              <input id="hands" type="checkbox" name="target" value="hands" /> */}
+              <fieldset id="target" onChange={onChangeHandler}>
                 <label htmlFor="body">Тело</label>
                 <input onChange={onChangeHandler} id="body" type="radio" name="target" value="body" />
                 <label htmlFor="body">Руки</label>
                 <input onChange={onChangeHandler} id="hands" type="radio" name="target" value="hands" />
-              </fieldset> */}
+              </fieldset>
             </div>
           </div>
 

@@ -28,18 +28,14 @@ export const BasketCard: FC<IBasketCard> = ({ product }) => {
       <img loading="lazy" width={281} height={181} src={img} alt="item" />
 
       <div className={styles.description}>
-
         <div className={styles.container}>
           <svg className={styles.container__img}>
             <use xlinkHref={`${sprite}#${pack}`}></use>
           </svg>
           <span className={styles.container__value}>{size}</span>
         </div>
-
         <h2 className={styles.description__title}>{brand} {name}</h2>
-
         <p className={styles.description__info}>{description}</p>
-
       </div>
 
       <div className={styles.item__tools}>
@@ -49,10 +45,8 @@ export const BasketCard: FC<IBasketCard> = ({ product }) => {
           <p className={styles.counter__number}>{quantity}</p>
           <button className={styles.counter__increase} onClick={() => onClickIncreaseHandler(product)}>+</button>
         </div>
-
         <div className={styles.line}></div>
         <h2 className={styles.item__price}>{totalprice} ₸</h2>
-
         <div className={styles.line}></div>
         <div className={styles.item__delete}>
           <Button

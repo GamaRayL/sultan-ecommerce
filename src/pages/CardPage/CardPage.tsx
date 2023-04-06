@@ -26,24 +26,13 @@ const CardPage = () => {
     setCounter(quantity);
   }, [items]);
 
-  // const getQuantityUpdate = (id: number) => {
-
-  // };
-
   const onClickIncreaseHandler = (product: IProduct) => {
-    const { id } = product;
     dispatch(addProduct(product));
-    // setCounter(getQuantityUpdate(id));
   };
 
   const onClickDecreaseHandler = (id: number) => {
     if (counter <= 1) return;
     dispatch(removeProduct(id));
-  };
-
-  const careObj = {
-    body: "Уход за телом",
-    hands: "Уход за руками"
   };
 
   return (
