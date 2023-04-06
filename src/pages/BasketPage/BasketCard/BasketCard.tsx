@@ -8,6 +8,7 @@ import IBasketCard from './type';
 import styles from "./styles.module.scss";
 
 export const BasketCard: FC<IBasketCard> = ({ product }) => {
+  const { pack, size, img, brand, name, description, quantity, totalprice, id } = product;
   const dispatch = useAppDispatch();
 
   function onClickDecreaseHandler(id: number) {
@@ -24,39 +25,42 @@ export const BasketCard: FC<IBasketCard> = ({ product }) => {
 
   return (
     <div className={styles.item}>
-      <div className={styles.item__img}>
-        <img src={product.img} alt="item" />
-      </div>
+      <img loading="lazy" width={281} height={181} src={img} alt="item" />
 
       <div className={styles.description}>
 
         <div className={styles.container}>
           <svg className={styles.container__img}>
-            <use xlinkHref={`${sprite}#${product.package}`}></use>
+            <use xlinkHref={`${sprite}#${pack}`}></use>
           </svg>
-          <span className={styles.container__value}>{product.size}</span>
+          <span className={styles.container__value}>{size}</span>
         </div>
 
-        <h2 className={styles.description__title}>{product.brand} {product.name}</h2>
+        <h2 className={styles.description__title}>{brand} {name}</h2>
 
-        <p className={styles.description__info}>{product.description}</p>
+        <p className={styles.description__info}>{description}</p>
 
       </div>
 
       <div className={styles.item__tools}>
         <div className={styles.line}></div>
         <div className={styles.counter}>
-          <button className={styles.counter__decrease} onClick={() => onClickDecreaseHandler(product.id)}>-</button>
-          <p className={styles.counter__number}>{product.quantity}</p>
+          <button className={styles.counter__decrease} onClick={() => onClickDecreaseHandler(id)}>-</button>
+          <p className={styles.counter__number}>{quantity}</p>
           <button className={styles.counter__increase} onClick={() => onClickIncreaseHandler(product)}>+</button>
         </div>
 
         <div className={styles.line}></div>
-        <h2 className={styles.item__price}>{product.totalprice} ₸</h2>
+        <h2 className={styles.item__price}>{totalprice} ₸</h2>
 
         <div className={styles.line}></div>
         <div className={styles.item__delete}>
-          <Button onClick={() => onClickDeleteHandler(product.id)} icon="delete" buttonSize="small" iconSize={25} />
+          <Button
+            icon="delete"
+            buttonSize="small"
+            iconSize={25}
+            onClick={() => onClickDeleteHandler(id)}
+          />
         </div>
       </div>
     </div>

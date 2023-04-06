@@ -17,7 +17,7 @@ const CatalogPage: FC = () => {
   const [care, setCare] = useState("");
   const [isCare, setIsCare] = useState(true);
   const currentPage = useAppSelector(state => state.productReducer.currentPage);
-  const { data: productsFiltred, isLoading, error } = productAPI.useFetchFiltredProductsQuery({
+  const { data: productsFiltred, isLoading, isSuccess, error } = productAPI.useFetchFiltredProductsQuery({
     page: currentPage, limit: 15, gte: priceFrom, lte: priceTo, vendor: vendor, sort: sort, order: order, q: care
   });
 
@@ -55,7 +55,7 @@ const CatalogPage: FC = () => {
             <Card key={product.id} product={product} />
           )}
           <div className={styles.catalog__pagination}>
-            {productsFiltred && <Pagination />}
+            <Pagination />
           </div>
         </div>
       </div>

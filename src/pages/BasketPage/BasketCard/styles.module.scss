@@ -16,13 +16,6 @@ $dottedLineLight: 1px dashed rgba(63, 78, 101, .2);
   align-items: center;
   padding: 50px 0;
   border-top: $dottedLine;
-  &__img {
-    display: flex;
-    justify-content: center;
-    width: 281px;
-    height: 181px;
-    margin-right: 20px;
-  }
   &__tools {
     display: flex;
     align-items: center;

@@ -10,6 +10,7 @@ import styles from "./styles.module.scss";
 
 export const Filter: FC<IFilter> = (props) => {
   const { setPriceFrom, setPriceTo, setVendor, getCare } = props;
+
   const { data: productsPriceHighToLow, isLoading } = productAPI.useFetchSortedProductsQuery({ sort: "price", order: "desc" });
   const { data: productsVendorHightToLow } = productAPI.useFetchSortedProductsQuery({ sort: "vendor", order: "asc" });
   const maxPrice = productsPriceHighToLow?.[0].price;
@@ -17,6 +18,7 @@ export const Filter: FC<IFilter> = (props) => {
   const [valuePriceFrom, setValuePriceFrom] = useState(0);
   const [valuePriceTo, setValuePriceTo] = useState<number | undefined>(maxPrice ?? 10000);
   const [vendorsObject, setVendorsObject] = useState({});
+
   let currentVendorArr: string[] = [];
 
   useEffect(() => {
@@ -35,6 +37,8 @@ export const Filter: FC<IFilter> = (props) => {
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
     const formNode = e.target as HTMLFormElement;
+    console.log(formNode);
+
 
     if (+valuePriceFrom > +valuePriceTo!) return;
     setPriceFrom(valuePriceFrom);
@@ -45,10 +49,10 @@ export const Filter: FC<IFilter> = (props) => {
     formNode.reset();
   };
 
-  const onClickResetHandler = (e: MouseEvent<HTMLFormElement>) => {
+  const onClickResetHandler = (e: MouseEvent) => {
     e.preventDefault();
 
-    const formNode = e.currentTarget.form as HTMLFormElement;
+    const formNode = e.currentTarget as HTMLFormElement;
 
     setPriceFrom(valuePriceFrom);
     setPriceTo(maxPrice);
@@ -87,7 +91,7 @@ export const Filter: FC<IFilter> = (props) => {
   };
 
 
-  const onClickChooseVendor = (e: React.MouseEvent<HTMLInputElement>) => {
+  const onClickChooseVendor = (e: MouseEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
 
     if (!currentVendorArr.includes(value)) {
@@ -109,7 +113,7 @@ export const Filter: FC<IFilter> = (props) => {
             </p>
 
             <div className={styles.price__block}>
-              <Input onChange={onChangePriceFrom} priceValue={valuePriceFrom} />
+              <Input priceValue={valuePriceFrom} onChange={onChangePriceFrom} />
               <span className={styles.price__dash}>-</span>
 
               <Input priceValue={valuePriceTo} onChange={onChangePriceTo} />
@@ -119,7 +123,12 @@ export const Filter: FC<IFilter> = (props) => {
           <div className={styles.vendor}>
             <p className={styles.title}>Производитель</p>
             <div className={styles.vendor__input}>
-              <InputField onChange={onSearchVendor} icon="search" placeholder="Поиск..." />
+              <InputField
+                name="input-filter"
+                icon="search"
+                placeholder="Поиск..."
+                onChange={onSearchVendor}
+              />
             </div>
 
             <div className={styles.vendor__list}>
@@ -144,7 +153,13 @@ export const Filter: FC<IFilter> = (props) => {
 
         <div className={styles.filter__tools}>
           <Button form="my-form" type="submit">Показать</Button>
-          <Button form="my-form" onClick={onClickResetHandler} icon="delete" iconSize={25} buttonSize="small" />
+          <Button
+            form="my-form"
+            icon="delete"
+            iconSize={25}
+            buttonSize="small"
+            onClick={onClickResetHandler}
+          />
         </div>
 
         <h3 className={`${styles.filter__title} ${styles.title}`} id="hands" onClick={getCare}>Уход за руками</h3>

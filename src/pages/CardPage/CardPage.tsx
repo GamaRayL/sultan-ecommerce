@@ -13,34 +13,33 @@ import styles from "./styles.module.scss";
 
 const CardPage = () => {
   const { id } = useParams();
-  const { data: product, isLoading, error } = productAPI.useFetchProductQuery(Number(id));
-  const items = useAppSelector(state => state.basket.basketItems);
-  const [quantity, setQuantity] = useState<number[]>([]);
   const dispatch = useDispatch();
+  const items = useAppSelector(state => state.basket.basketItems);
+  const [counter, setCounter] = useState(0);
+  const { data: product, isLoading, error } = productAPI.useFetchProductQuery(Number(id));
 
-  function getQuantityUpdate(id: number) {
-    return items.map((item) => {
-      if (item.id === id) return item.quantity;
-    });
-  }
+  useEffect(() => {
+    const basketItem = items.find((item) => item.id === Number(id));
+    if (!basketItem) return;
+    const { quantity } = basketItem;
 
-  // const getQuantity = (id: number): number => {
-  //   const basketItem = items.find((item) => item.id === id);
-  //   const { quantity } = basketItem;
+    setCounter(quantity);
+  }, [items]);
 
-  //   return quantity;
+  // const getQuantityUpdate = (id: number) => {
+
   // };
 
-
-  function onClickIncreaseHandler(product: IProduct) {
+  const onClickIncreaseHandler = (product: IProduct) => {
+    const { id } = product;
     dispatch(addProduct(product));
-    console.log(product.id);
-    setQuantity(getQuantityUpdate(product.id));
-  }
+    // setCounter(getQuantityUpdate(id));
+  };
 
-  function onClickDecreaseHandler(id: number) {
+  const onClickDecreaseHandler = (id: number) => {
+    if (counter <= 1) return;
     dispatch(removeProduct(id));
-  }
+  };
 
   const careObj = {
     body: "Уход за телом",
@@ -53,21 +52,18 @@ const CardPage = () => {
       {error && <div className={styles.catalog__other}><h2>Возникла ошибка при загрузке контента</h2></div>}
       {product &&
         <div className={styles.card} >
-
-          <div className={styles.card__img}>
-            <img src={product[0].img} alt="Product" />
-          </div>
+          <img loading="lazy" height={472} width={664} src={product[0].img} alt="Product" />
 
           <div className={styles.card__description}>
             <p className={styles.card__available}>В наличии</p>
             <div className={styles.title}>
-              <span className={styles.title__brand}>{product[0].brand} </span>
+              <span className={styles.title__brand}>{product[0].brand}</span>
               <span className={styles.title__name}>{product[0].name}</span>
             </div>
 
             <div className={styles.container}>
               <svg className={styles.container__img}>
-                <use xlinkHref={`${sprite}#${product[0].package}`}></use>
+                <use xlinkHref={`${sprite}#${product[0].pack}`}></use>
               </svg>
               <span className={styles.container__value}>{product[0].size}</span>
             </div>
@@ -76,7 +72,7 @@ const CardPage = () => {
               <div className={styles.payment__price}>{product[0].price} ₸</div>
               <div className={styles.counter}>
                 <button className={styles.counter__decrease} onClick={() => onClickDecreaseHandler(product[0].id)}>-</button>
-                <p className={styles.counter__number}>{quantity}</p>
+                <p className={styles.counter__number}>{counter}</p>
                 <button className={styles.counter__increase} onClick={() => onClickIncreaseHandler(product[0])}>+</button>
               </div>
               <Button onClick={() => onClickIncreaseHandler(product[0])} iconSize={23} icon="basket">

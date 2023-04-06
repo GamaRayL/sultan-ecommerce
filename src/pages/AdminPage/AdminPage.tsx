@@ -1,39 +1,12 @@
 import React, { useState, FormEvent, ChangeEvent, MouseEvent } from 'react';
 import { productAPI } from "@/services/productService/productService";
+import { initialValues, objNames } from '@/pages/AdminPage/const';
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
 import { IProduct } from "@/types";
 import styles from "./styles.module.scss";
 
 export const AdminPage = () => {
-  const obj = {
-    brand: "Бренд",
-    name: "Имя",
-    img: "URL изображения",
-    article: "Артикул",
-    barcode: "Штрихкод",
-    description: "Описание",
-    vendor: "Вендор",
-    size: "Размер",
-    price: "Цена",
-  };
-  const initialValues = {
-    id: new Date().valueOf(),
-    brand: "",
-    name: "",
-    img: "",
-    description: "",
-    target: [],
-    article: "",
-    barcode: "",
-    vendor: "",
-    package: "",
-    size: "",
-    price: 1,
-    totalprice: 1,
-    quantity: 1
-  };
-
   const [values, setValues] = useState(initialValues);
   const [updates, setUpdates] = useState({});
   const [isEdit, setIsEdit] = useState(false);
@@ -47,27 +20,27 @@ export const AdminPage = () => {
     const { name, value } = e.target as HTMLInputElement;
     console.log(name, value);
 
-    // setValues({
-    //   ...values,
-    //   [name]: +value ? Number(value) : value,
-    // });
+    setValues({
+      ...values,
+      [name]: +value ? Number(value) : value,
+    });
   };
 
   // Добавление товара
-  const onSubmitHandler = async (e: FormEvent) => {
+  const onSubmitProduct = async (e: FormEvent) => {
     e.preventDefault();
 
     await createProduct(values);
   };
 
   // Обновление товара по клику
-  const onUpdateHandler = (product: IProduct) => {
+  const onClickUpdate = (product: IProduct) => {
     updateProduct({ ...product, ...updates });
     setIsEdit(false);
   };
 
   // Удаление товара
-  const onDeleteHandler = (e: MouseEvent, product: IProduct) => {
+  const onClickDelete = (e: MouseEvent, product: IProduct) => {
     e.stopPropagation();
     deleteProduct(product);
   };
@@ -84,8 +57,8 @@ export const AdminPage = () => {
   return (
     <>
       <div className={styles.container}>
-        <form className={styles.create} onChange={onChangeHandler} onSubmit={onSubmitHandler}>
-          {Object.entries(obj).map(([prop, value]) =>
+        <form className={styles.create} onChange={onChangeHandler} onSubmit={onSubmitProduct}>
+          {Object.entries(objNames).map(([prop, value]) =>
             <div className={styles.create__item} key={prop}>
               <label>
                 <p className={styles.create__title}>{value}</p>
@@ -101,9 +74,9 @@ export const AdminPage = () => {
               </p>
               <div className={styles.create__box}>
                 <label htmlFor="bottle">Бутыль</label>
-                <input id="bottle" type="radio" name="package" value="bottle" />
+                <input id="bottle" type="radio" name="pack" value="bottle" />
                 <label htmlFor="box">Коробка</label>
-                <input id="box" type="radio" name="package" value="box" />
+                <input id="box" type="radio" name="pack" value="box" />
               </div>
             </fieldset>
           </div>
@@ -130,7 +103,7 @@ export const AdminPage = () => {
         <div className={styles.list}>
           <h2 className={styles.list__title}>Список товара</h2>
           {products && products.map((product: IProduct) =>
-            <div className={styles.list__item} key={product.id}>
+            <div className={styles.list__item} key={product.id} >
               <form id="form-update">
                 <p className={styles.item}>{product.id}</p>
                 {isEdit
@@ -158,8 +131,8 @@ export const AdminPage = () => {
                   ? <input className={styles.list__input} name="price" onChange={onChangeProduct} defaultValue={product.price} />
                   : <p className={styles.item}>{product.price}</p>}
                 {isEdit
-                  ? <input className={styles.list__input} name="package" onChange={onChangeProduct} defaultValue={product.package} />
-                  : <p className={styles.item}>{product.package}</p>}
+                  ? <input className={styles.list__input} name="pack" onChange={onChangeProduct} defaultValue={product.pack} />
+                  : <p className={styles.item}>{product.pack}</p>}
                 {isEdit
                   ? <input className={styles.list__input} name="size" onChange={onChangeProduct} defaultValue={product.size} />
                   : <p className={styles.item}>{product.size}</p>}
@@ -169,10 +142,10 @@ export const AdminPage = () => {
               </form>
               <div className={styles.list__tools}>
                 {isEdit
-                  ? <Button onClick={() => onUpdateHandler(product)}>Сохранить</Button>
+                  ? <Button onClick={() => onClickUpdate(product)}>Сохранить</Button>
                   : <Button onClick={() => setIsEdit(true)}>Изменить</Button>
                 }
-                <Button onClick={(e) => onDeleteHandler(e, product)}>Удалить</Button>
+                <Button onClick={(e) => onClickDelete(e, product)}>Удалить</Button>
               </div>
             </div>
           )}

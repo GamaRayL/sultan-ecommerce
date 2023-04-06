@@ -7,30 +7,32 @@ export const Breadcrumbs: FC = () => {
   const location = useLocation();
   const { data: products } = productAPI.useFetchSortedProductsQuery({ sort: "vendor", order: "asc" });
   let currentLink = "";
-
+  console.log(location.pathname.split("/"));
   const crumbs = location.pathname.split("/")
-    .filter(crumb => crumb !== "")
+    .filter(Boolean)
     .map(crumb => {
       currentLink += `/${crumb}`;
 
       let product = products && products.filter(p => p.id == Number(crumb))[0];
       let renamedCrumb;
 
-      if (crumb == "catalog") {
-        renamedCrumb = "Каталог";
-      } else if (crumb == "home") {
-        renamedCrumb = "Главная";
-      } else if (crumb == "basket") {
-        renamedCrumb = "Корзина";
-      } else if (crumb == "admin") {
-        renamedCrumb = "Админ панель";
-      } else renamedCrumb = `${product!.brand} ${product!.name}`;
+      if (products) {
+        if (crumb == "catalog") {
+          renamedCrumb = "Каталог";
+        } else if (crumb == "home") {
+          renamedCrumb = "Главная";
+        } else if (crumb == "basket") {
+          renamedCrumb = "Корзина";
+        } else if (crumb == "admin") {
+          renamedCrumb = "Админ панель";
+        } else renamedCrumb = `${product!.brand} ${product!.name}`;
 
-      return (
-        <div className={styles.crumb} key={crumb}>
-          <Link to={currentLink}>{renamedCrumb}</Link>
-        </div>
-      );
+        return (
+          <div className={styles.crumb} key={crumb}>
+            <Link to={currentLink}>{renamedCrumb}</Link>
+          </div>
+        );
+      }
     });
 
   return (

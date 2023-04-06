@@ -6,23 +6,23 @@ import styles from "./styles.module.scss";
 export const InputField: FC<IInputField> = ({ onChange, placeholder, mode, icon, name, required }) => {
   const [value, setValue] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
 
-    setValue(value);
+    setValue(newValue);
     onChange?.(event);
   };
 
   return (
     <div className={styles.field}>
       <input
-        required={required ? true : false}
+        required={required}
         name={name}
         value={value}
-        onChange={handleChange}
         type="text"
         placeholder={placeholder}
         className={`${styles.input} ${mode ? styles.input_mode : ""}`}
+        onChange={onChangeHandler}
       />
       {icon &&
         <button className={styles.btn}>

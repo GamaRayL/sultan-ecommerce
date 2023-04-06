@@ -48,7 +48,7 @@
   }
 }
 
-.icon {
+.svg {
   fill: $white;
   &_outlined {
     fill: $darkBlue;
@@ -59,4 +59,9 @@
   &_contained {
     fill: $white;
   }
+}
+
+.icon {
+  width: var(--size);
+  height: var(--size);
 }

@@ -1,12 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { productAPI } from "@/services/productService/productService";
 import sprite from "@/assets/sprite/sprite.svg";
 import ISort from './types';
 import styles from "./styles.module.scss";
 
 export const Sort: FC<ISort> = ({ setSort, setOrder }) => {
-  const dispatch = useDispatch();
   const [value, setValue] = useState("Название");
   const [isShow, setIsShow] = useState(false);
   const array = ["Название", "Цена (по возрастанию)", "Цена (по убыванию)"];

@@ -1,5 +1,3 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
-
 export interface IProduct {
   id: number;
   brand: string;
@@ -12,17 +10,9 @@ export interface IProduct {
   size: string;
   article: string;
   description: string;
-  package: string;
+  pack: string;
   target: string[];
   quantity: number;
-}
-
-
-
-
-
-export interface IPaginations {
-  products: IProduct[] | undefined;
 }
 
 export interface IProductState {

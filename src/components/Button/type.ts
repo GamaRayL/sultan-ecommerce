@@ -4,9 +4,9 @@ export default interface IButton {
   color?: "primary" | "inherit";
   variant?: "contained" | "outlined";
   iconSize?: number;
-  uppercase?: boolean;
+  isUpperCase?: boolean;
   buttonSize?: "small" | "medium" | "large";
   children?: React.ReactNode;
   form?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

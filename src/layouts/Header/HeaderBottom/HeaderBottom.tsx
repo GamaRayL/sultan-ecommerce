@@ -43,7 +43,7 @@ export const HeaderBottom: FC = () => {
           <a href="#" className={`${styles.info} ${styles.info_call}`} target="_blank">Заказать звонок</a>
         </div>
         <div className={styles.consultant__img}>
-          <img src={consultant} alt="" />
+          <img loading='lazy' src={consultant} alt="" />
         </div>
       </div>
       {windowWidth > 1260
