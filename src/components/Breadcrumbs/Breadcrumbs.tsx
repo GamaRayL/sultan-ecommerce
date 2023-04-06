@@ -12,6 +12,7 @@ export const Breadcrumbs: FC = () => {
     .filter(crumb => crumb !== "")
     .map(crumb => {
       currentLink += `/${crumb}`;
+      console.log(currentLink);
 
       let product = products && products.filter(p => p.id == Number(crumb))[0];
       let renamedCrumb;

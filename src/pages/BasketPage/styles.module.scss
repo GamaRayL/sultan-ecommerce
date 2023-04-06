@@ -22,3 +22,25 @@
     white-space: nowrap;
   }
 }
+
+.order {
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+  }
+  &__title {
+    font-size: $large40;
+    font-weight: $medium;
+    margin-bottom: 0;
+    color: $black;
+    text-transform: uppercase;
+  }
+  &__info {
+    font-size: $medium20;
+    color: $darkBlue;
+    font-weight: $light;
+  }
+}

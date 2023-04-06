@@ -81,10 +81,19 @@ export const basketSlice = createSlice({
       );
 
       setItemFunc([...state.basketItems], state.totalAmount, state.totalQuantity);
+    },
+
+    deleteAllProducts: (state) => {
+      state.basketItems = [];
+      state.totalQuantity = 0;
+      state.totalAmount = 0;
+
+      setItemFunc([...state.basketItems], state.totalAmount, state.totalQuantity);
     }
   },
+
 });
 
-export const { addProduct, removeProduct, deleteProduct } = basketSlice.actions;
+export const { addProduct, removeProduct, deleteProduct, deleteAllProducts } = basketSlice.actions;
 
 export default basketSlice.reducer;
