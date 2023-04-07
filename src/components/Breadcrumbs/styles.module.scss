@@ -12,12 +12,12 @@
   background: linear-gradient(rgba(63, 78, 101, .30) 60%, rgba(255, 255, 255, 0) 0%) repeat-y right;
   background-size: 1px 4px;
   padding-right: 10px;
+  color: $darkBlue;
   &:last-child {
     opacity: .50;
     background-image: none;
  }
   a {
-    color: $darkBlue;
     font-weight: $light;
   }
 }

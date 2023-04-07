@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import productAPI from '@/services/productService';
 import styles from "./styles.module.scss";
 
 export const Breadcrumbs: FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { data: products } = productAPI.useFetchSortedProductsQuery({ sort: "vendor", order: "asc" });
   let currentLink = "";
-  console.log(location.pathname.split("/"));
   const crumbs = location.pathname.split("/")
     .filter(Boolean)
     .map(crumb => {
@@ -37,6 +37,7 @@ export const Breadcrumbs: FC = () => {
 
   return (
     <div className={styles.breadcrumbs}>
+      <div onClick={() => navigate('/')} className={styles.crumb}>Главная</div>
       {crumbs}
     </div>
   );

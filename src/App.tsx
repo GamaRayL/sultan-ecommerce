@@ -18,11 +18,11 @@ const App = () => {
         <div className="app">
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route path="/home" element={<HomePage />} />
-              <Route path="home/admin" element={<AdminPage />} />
-              <Route path="home/catalog" element={<CatalogPage />} />
-              <Route path="home/catalog/:id" element={<CardPage />} />
-              <Route path="home/catalog/basket" element={<BasketPage />} />
+              <Route index element={<HomePage />} />
+              <Route path="admin" element={<AdminPage />} />
+              <Route path="catalog" element={<CatalogPage />} />
+              <Route path="catalog/:id" element={<CardPage />} />
+              <Route path="catalog/basket" element={<BasketPage />} />
               <Route path="*" element={<NotfoundPage />} />
             </Route>
           </Routes>

@@ -8,8 +8,8 @@ const HomePage: FC = () => {
 
   return (
     <div className={styles.home}>
-      <Button uppercase color="inherit" onClick={() => navigate("/home/catalog")}>Каталог</Button>
-      <Button uppercase color="inherit" onClick={() => navigate("/home/admin")}>Админка</Button>
+      <Button isUpperCase color="inherit" onClick={() => navigate("/catalog")}>Каталог</Button>
+      <Button isUpperCase color="inherit" onClick={() => navigate("/admin")}>Админка</Button>
     </div>
   );
 };

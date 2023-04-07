@@ -33,7 +33,7 @@ export const HeaderBottom: FC = () => {
           <use xlinkHref={`${sprite}#logo`}></use>
         </svg>
       </div>
-      <Button icon="catalog" onClick={() => navigate("home/catalog")}>Каталог</Button>
+      <Button icon="catalog" onClick={() => navigate("catalog")}>Каталог</Button>
       <div className={styles.line}></div>
       <InputField placeholder="Поиск" mode />
       <div className={styles.consultant}>
@@ -50,7 +50,7 @@ export const HeaderBottom: FC = () => {
         ? <Button buttonSize="medium" icon="download">Прайс-лист</Button>
         : null
       }
-      <div className={styles.basket} onClick={() => navigate("home/catalog/basket")}>
+      <div className={styles.basket} onClick={() => navigate("catalog/basket")}>
         <div className={styles.basket__icon}>
           <svg className={styles.icon}>
             <use xlinkHref={`${sprite}#basket`}></use>
