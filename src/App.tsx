@@ -22,7 +22,7 @@ const App = () => {
               <Route path="admin" element={<AdminPage />} />
               <Route path="catalog" element={<CatalogPage />} />
               <Route path="catalog/:id" element={<CardPage />} />
-              <Route path="catalog/basket" element={<BasketPage />} />
+              <Route path="basket" element={<BasketPage />} />
               <Route path="*" element={<NotfoundPage />} />
             </Route>
           </Routes>

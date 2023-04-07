@@ -50,7 +50,7 @@ export const HeaderBottom: FC = () => {
         ? <Button buttonSize="medium" icon="download">Прайс-лист</Button>
         : null
       }
-      <div className={styles.basket} onClick={() => navigate("catalog/basket")}>
+      <div className={styles.basket} onClick={() => navigate("basket")}>
         <div className={styles.basket__icon}>
           <svg className={styles.icon}>
             <use xlinkHref={`${sprite}#basket`}></use>
